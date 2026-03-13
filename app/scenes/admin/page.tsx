@@ -13,8 +13,8 @@ export default function AdminScenePage() {
       sceneName={sceneInvariants.admin.title[locale]}
       description={
         locale === "zh"
-          ? "运营工作台结构保持不变，通过主题切换观察密度与控件气质变化。"
-          : "Operational dashboard structure remains invariant while density and control tone shift by theme."
+          ? "运营工作台结构固定，重点观察密度与操作节奏变化。"
+          : "Admin structure stays fixed; compare density and operation rhythm by theme."
       }
       moduleOrder={sceneInvariants.admin.modules[locale]}
     >

@@ -2,6 +2,8 @@
 
 在同一产品场景中，展示三种设计语言启发下的不同界面表达。
 
+仓库地址：[https://github.com/Hessel2333/Stylish](https://github.com/Hessel2333/Stylish)
+
 ## 项目动机
 多数主题切换只变颜色。Stylish 强调在保持场景结构不变的前提下，对比更深层的设计差异：留白、圆角、边界、阴影、密度、控件气质与动效节奏。
 
@@ -122,7 +124,7 @@ npm run start
 ```
 
 ## Vercel 部署
-1. 将仓库推送到 GitHub。
+1. 将仓库推送到 GitHub（[https://github.com/Hessel2333/Stylish](https://github.com/Hessel2333/Stylish)）。
 2. 在 Vercel 导入该仓库。
 3. Framework 选择 Next.js（通常可自动识别）。
 4. Build Command：`npm run build`

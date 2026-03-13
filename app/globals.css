@@ -262,7 +262,7 @@ body {
   border-radius: 50%;
   background: var(--ui-slider-thumb-bg);
   border: var(--ui-slider-thumb-border);
-  box-shadow: var(--ui-slider-thumb-shadow);
+  box-shadow: var(--ui-slider-thumb-mask, 0 0 0 0 transparent), var(--ui-slider-thumb-shadow);
   transition: transform var(--motion-fast) var(--ease-standard);
 }
 
@@ -282,7 +282,65 @@ body {
   border-radius: 50%;
   background: var(--ui-slider-thumb-bg);
   border: var(--ui-slider-thumb-border);
-  box-shadow: var(--ui-slider-thumb-shadow);
+  box-shadow: var(--ui-slider-thumb-mask, 0 0 0 0 transparent), var(--ui-slider-thumb-shadow);
+}
+
+.ui-chart-panel {
+  position: relative;
+  overflow: hidden;
+  height: 14rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ui-chart-panel-border, var(--border-subtle));
+  background: var(--ui-chart-panel-bg, color-mix(in hsl, var(--accent) 10%, white));
+  padding: 1rem;
+}
+
+.ui-chart-panel::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: var(--ui-chart-panel-overlay, none);
+}
+
+.ui-chart-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.5rem;
+}
+
+.ui-chart-grid-line {
+  position: absolute;
+  inset-inline: 1rem;
+  border-top: 1px dashed var(--ui-chart-grid-line, var(--border-subtle));
+  opacity: 0.9;
+}
+
+.ui-chart-grid-line.is-top {
+  top: 22%;
+}
+
+.ui-chart-grid-line.is-mid {
+  top: 50%;
+}
+
+.ui-chart-grid-line.is-low {
+  top: 78%;
+}
+
+.ui-chart-bar {
+  border-radius: var(--ui-chart-bar-radius, var(--radius-xs)) var(--ui-chart-bar-radius, var(--radius-xs)) 0 0;
+  background: var(--ui-chart-bar-fill, var(--accent));
+  border: var(--ui-chart-bar-border, 1px solid transparent);
+  box-shadow: var(--ui-chart-bar-shadow, none);
+}
+
+.ui-chart-bar.is-alt {
+  background: var(--ui-chart-bar-fill-alt, var(--ui-chart-bar-fill, var(--accent)));
 }
 
 .ui-badge {
@@ -299,10 +357,6 @@ body {
   line-height: 1;
   transition: background-color var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard),
     color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
-  backdrop-filter: blur(calc(var(--ui-surface-panel-backdrop-blur, 0px) * 0.5))
-    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
-  -webkit-backdrop-filter: blur(calc(var(--ui-surface-panel-backdrop-blur, 0px) * 0.5))
-    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
 }
 
 .ui-badge-neutral {

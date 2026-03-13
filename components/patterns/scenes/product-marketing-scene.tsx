@@ -152,13 +152,14 @@ export const ProductMarketingScene = () => {
 
   const ctaFeedback =
     ctaState === "idle" ? copy.actionIdle : ctaState === "booked" ? copy.actionBooked : copy.actionBrief;
+  const heroHighlights = content.hero.stats.slice(0, 2);
 
   return (
     <div className="grid gap-[var(--section-gap)]">
       <section className="surface-panel motion-fade-up overflow-hidden p-[var(--card-padding)]">
         <p className="eyebrow">{content.hero.eyebrow}</p>
         <h2 className="title-display mt-3 text-[var(--scale-hero)] text-token-primary">{content.hero.title}</h2>
-        <p className="mt-4 max-w-3xl text-token-secondary">{content.hero.description}</p>
+        <p className="mt-4 max-w-2xl text-token-secondary">{content.hero.description}</p>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <Button size="lg" variant={heroMode === "trial" ? "primary" : "secondary"} onClick={() => setHeroMode("trial")}>
@@ -191,10 +192,10 @@ export const ProductMarketingScene = () => {
           <Badge tone="accent">{copy.progress} {heroSignal.progress}%</Badge>
         </div>
 
-        <div className="mt-7 grid gap-[var(--grid-gap)] sm:grid-cols-3">
-          {content.hero.stats.map((stat, index) => (
+        <div className="mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
+          {heroHighlights.map((stat, index) => (
             <div key={stat.label} className="interactive-panel subtle-panel p-[var(--space-md)]">
-              <p className="text-2xl font-semibold text-token-primary">{heroSignal.stats[index] ?? stat.value}</p>
+              <p className="text-xl font-semibold text-token-primary">{heroSignal.stats[index] ?? stat.value}</p>
               <p className="mt-1 text-sm text-token-secondary">{stat.label}</p>
             </div>
           ))}

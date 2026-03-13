@@ -227,8 +227,20 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
         trackBg: "rgba(255, 255, 255, 0.54)",
         trackFill: "var(--accent)",
         thumbBg: "rgba(255, 255, 255, 0.92)",
-        thumbBorder: "1px solid rgba(255, 255, 255, 0.86)",
-        thumbShadow: "0 6px 16px rgba(17, 25, 40, 0.16)"
+        thumbBorder: "2px solid rgba(255, 255, 255, 0.92)",
+        thumbShadow: "0 6px 16px rgba(17, 25, 40, 0.16)",
+        thumbMask: "0 0 0 4px color-mix(in hsl, var(--surface-elevated) 82%, white 18%)"
+      },
+      chart: {
+        panelBg: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 9%, white) 0%, transparent 100%)",
+        panelBorder: "rgba(255, 255, 255, 0.54)",
+        panelOverlay: "linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 58%)",
+        gridLine: "rgba(255, 255, 255, 0.44)",
+        barRadius: "var(--radius-full)",
+        barFill: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 72%, white 28%) 0%, var(--accent) 100%)",
+        barFillAlt: "linear-gradient(180deg, color-mix(in hsl, var(--accent-soft) 55%, white 45%) 0%, color-mix(in hsl, var(--accent) 62%, white 38%) 100%)",
+        barBorder: "1px solid color-mix(in hsl, var(--accent) 28%, white 72%)",
+        barShadow: "0 8px 18px color-mix(in hsl, var(--accent) 16%, transparent)"
       },
       modal: {
         radius: c.modal.radius,
@@ -408,15 +420,15 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
           hoverBorder: "color-mix(in hsl, var(--accent) 58%, white 42%)"
         }
       },
-      badge: {
-        height: "28px",
-        radius: p.radius.sm,
-        fontWeight: "650",
-        neutral: {
-          bg: "color-mix(in hsl, var(--surface-muted) 90%, white 10%)",
-          color: "var(--text-secondary)",
-          border: "color-mix(in hsl, var(--border-default) 92%, transparent 8%)"
-        },
+    badge: {
+      height: "28px",
+      radius: p.radius.sm,
+      fontWeight: "650",
+      neutral: {
+        bg: "color-mix(in hsl, var(--surface-muted) 95%, white 5%)",
+        color: "var(--text-secondary)",
+        border: "color-mix(in hsl, var(--border-default) 84%, transparent 16%)"
+      },
         accent: {
           bg: "color-mix(in hsl, var(--accent-soft) 84%, white 16%)",
           color: "color-mix(in hsl, var(--accent) 78%, var(--text-primary) 22%)",
@@ -466,7 +478,19 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
         trackFill: "var(--accent)",
         thumbBg: "#ffffff",
         thumbBorder: "1px solid color-mix(in hsl, var(--accent) 28%, white 72%)",
-        thumbShadow: "0 2px 8px rgba(53, 44, 72, 0.2)"
+        thumbShadow: "0 2px 8px rgba(53, 44, 72, 0.2)",
+        thumbMask: "0 0 0 2px color-mix(in hsl, var(--surface) 90%, white 10%)"
+      },
+      chart: {
+        panelBg: "linear-gradient(180deg, color-mix(in hsl, var(--accent-soft) 34%, white 66%) 0%, transparent 100%)",
+        panelBorder: "color-mix(in hsl, var(--border-default) 92%, transparent 8%)",
+        panelOverlay: "linear-gradient(180deg, color-mix(in hsl, var(--surface-elevated) 90%, white 10%) 0%, transparent 62%)",
+        gridLine: "color-mix(in hsl, var(--border-subtle) 92%, transparent 8%)",
+        barRadius: "var(--radius-sm)",
+        barFill: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 78%, white 22%) 0%, var(--accent) 100%)",
+        barFillAlt: "linear-gradient(180deg, color-mix(in hsl, var(--accent-soft) 64%, white 36%) 0%, color-mix(in hsl, var(--accent) 58%, white 42%) 100%)",
+        barBorder: "1px solid color-mix(in hsl, var(--accent) 26%, white 74%)",
+        barShadow: "0 4px 12px rgba(103, 80, 164, 0.22)"
       },
       modal: {
         radius: c.modal.radius,
@@ -509,15 +533,15 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
       primary: {
         bg: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 86%, white 14%) 0%, var(--accent) 100%)",
         color: "#ffffff",
-        border: "1px solid color-mix(in hsl, var(--accent) 80%, black 20%)",
+        border: "1px solid color-mix(in hsl, var(--accent) 42%, white 58%)",
         shadow: "0 8px 18px rgba(110, 115, 246, 0.25)",
         hoverBg: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 90%, white 10%) 0%, color-mix(in hsl, var(--accent) 92%, black 8%) 100%)",
         hoverColor: "#ffffff",
-        hoverBorder: "1px solid color-mix(in hsl, var(--accent) 86%, black 14%)",
+        hoverBorder: "1px solid color-mix(in hsl, var(--accent) 48%, white 52%)",
         hoverShadow: "0 10px 22px rgba(110, 115, 246, 0.3)",
         activeBg: "color-mix(in hsl, var(--accent) 88%, black 12%)",
         activeColor: "#ffffff",
-        activeBorder: "1px solid color-mix(in hsl, var(--accent) 84%, black 16%)",
+        activeBorder: "1px solid color-mix(in hsl, var(--accent) 56%, white 44%)",
         activeShadow: "0 4px 10px rgba(110, 115, 246, 0.2)"
       },
       secondary: {
@@ -551,15 +575,15 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
       ghost: {
         bg: "color-mix(in hsl, var(--surface) 80%, white 20%)",
         color: "var(--text-primary)",
-        border: "1px solid color-mix(in hsl, var(--border-strong) 72%, var(--border-default) 28%)",
+        border: "1px solid color-mix(in hsl, var(--border-default) 94%, white 6%)",
         shadow: "none",
         hoverBg: "color-mix(in hsl, var(--surface) 74%, white 26%)",
         hoverColor: "var(--text-primary)",
-        hoverBorder: "1px solid color-mix(in hsl, var(--border-strong) 82%, var(--border-default) 18%)",
+        hoverBorder: "1px solid color-mix(in hsl, var(--border-strong) 72%, white 28%)",
         hoverShadow: "none",
         activeBg: "color-mix(in hsl, var(--surface) 70%, white 30%)",
         activeColor: "var(--text-primary)",
-        activeBorder: "1px solid color-mix(in hsl, var(--border-strong) 88%, var(--border-default) 12%)",
+        activeBorder: "1px solid color-mix(in hsl, var(--border-strong) 80%, white 20%)",
         activeShadow: "none"
       },
       danger: {
@@ -650,9 +674,9 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
       radius: p.radius.full,
       fontWeight: "600",
       neutral: {
-        bg: "color-mix(in hsl, var(--surface-elevated) 92%, white 8%)",
+        bg: "color-mix(in hsl, var(--surface-elevated) 97%, white 3%)",
         color: "var(--text-secondary)",
-        border: "color-mix(in hsl, var(--border-default) 90%, white 10%)"
+        border: "color-mix(in hsl, var(--border-default) 82%, white 18%)"
       },
       accent: {
         bg: "color-mix(in hsl, var(--accent-soft) 84%, white 16%)",
@@ -703,7 +727,19 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
       trackFill: "var(--accent)",
       thumbBg: "#ffffff",
       thumbBorder: "1px solid color-mix(in hsl, var(--accent) 34%, white 66%)",
-      thumbShadow: "0 2px 8px rgba(52, 60, 89, 0.2)"
+      thumbShadow: "0 2px 8px rgba(52, 60, 89, 0.2)",
+      thumbMask: "0 0 0 2px color-mix(in hsl, var(--surface) 90%, white 10%)"
+    },
+    chart: {
+      panelBg: "linear-gradient(180deg, color-mix(in hsl, var(--accent-soft) 28%, white 72%) 0%, transparent 100%)",
+      panelBorder: "color-mix(in hsl, var(--border-default) 88%, white 12%)",
+      panelOverlay: "linear-gradient(180deg, color-mix(in hsl, var(--surface-elevated) 82%, white 18%) 0%, transparent 58%)",
+      gridLine: "color-mix(in hsl, var(--border-subtle) 88%, white 12%)",
+      barRadius: "var(--radius-xs)",
+      barFill: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 84%, white 16%) 0%, var(--accent) 100%)",
+      barFillAlt: "linear-gradient(180deg, color-mix(in hsl, var(--accent-soft) 60%, white 40%) 0%, color-mix(in hsl, var(--accent) 64%, white 36%) 100%)",
+      barBorder: "1px solid color-mix(in hsl, var(--border-strong) 54%, var(--accent) 46%)",
+      barShadow: "0 3px 10px rgba(68, 78, 112, 0.14)"
     },
     modal: {
       radius: c.modal.radius,

@@ -262,6 +262,18 @@ export type ComponentRecipes = {
     thumbBg: string;
     thumbBorder: string;
     thumbShadow: string;
+    thumbMask: string;
+  };
+  chart: {
+    panelBg: string;
+    panelBorder: string;
+    panelOverlay: string;
+    gridLine: string;
+    barRadius: string;
+    barFill: string;
+    barFillAlt: string;
+    barBorder: string;
+    barShadow: string;
   };
   modal: {
     radius: string;

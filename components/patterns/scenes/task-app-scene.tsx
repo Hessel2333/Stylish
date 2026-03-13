@@ -98,6 +98,9 @@ export const TaskAppScene = () => {
   }, [selectedTaskId, tasks]);
 
   const selectedTask = tasks.find((task) => task.id === selectedTaskId) ?? tasks[0] ?? null;
+  const inProgressCount = tasks.filter((task) => task.status === inProgressStatus).length;
+  const completedCount = tasks.filter((task) => task.status === doneStatus).length;
+  const blockedCount = tasks.filter((task) => task.status === blockedStatus).length;
 
   const createTask = () => {
     if (!formState.title.trim()) {
@@ -161,23 +164,24 @@ export const TaskAppScene = () => {
       <section className="grid gap-[var(--grid-gap)] lg:grid-cols-[1fr_auto]">
         <div className="surface-panel motion-fade-up p-[var(--panel-padding)]">
           <p className="eyebrow">{locale === "zh" ? "今日概览" : "Today Overview"}</p>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <p className="mt-2 max-w-xl text-sm text-token-secondary">
+            {locale === "zh"
+              ? "先聚焦当前执行状态，再进入任务队列与详情操作。"
+              : "Focus on current execution signal first, then move into queue and detail operations."}
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <article className="interactive-panel subtle-panel p-4">
               <p className="text-sm text-token-secondary">{locale === "zh" ? "今日到期" : "Due Today"}</p>
               <p className="title-display mt-1 text-3xl text-token-primary">{content.summary.dueToday}</p>
             </article>
             <article className="interactive-panel subtle-panel p-4">
               <p className="text-sm text-token-secondary">{locale === "zh" ? "进行中" : "In Progress"}</p>
-              <p className="title-display mt-1 text-3xl text-token-primary">{tasks.filter((task) => task.status === inProgressStatus).length}</p>
+              <p className="title-display mt-1 text-3xl text-token-primary">{inProgressCount}</p>
             </article>
-            <article className="interactive-panel subtle-panel p-4">
-              <p className="text-sm text-token-secondary">{locale === "zh" ? "已完成" : "Completed"}</p>
-              <p className="title-display mt-1 text-3xl text-token-primary">{tasks.filter((task) => task.status === doneStatus).length}</p>
-            </article>
-            <article className="interactive-panel subtle-panel p-4">
-              <p className="text-sm text-token-secondary">{locale === "zh" ? "阻塞" : "Blocked"}</p>
-              <p className="title-display mt-1 text-3xl text-token-primary">{tasks.filter((task) => task.status === blockedStatus).length}</p>
-            </article>
+          </div>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-token-secondary">
+            <Badge tone="success">{locale === "zh" ? `已完成 ${completedCount}` : `Done ${completedCount}`}</Badge>
+            <Badge tone="warning">{locale === "zh" ? `阻塞 ${blockedCount}` : `Blocked ${blockedCount}`}</Badge>
           </div>
         </div>
 

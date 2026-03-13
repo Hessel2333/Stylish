@@ -13,8 +13,8 @@ export default function TaskScenePage() {
       sceneName={sceneInvariants.task.title[locale]}
       description={
         locale === "zh"
-          ? "任务流与交互目标保持一致，在三种主题语言下对比日常使用体验。"
-          : "Daily task flow with identical interaction goals and shared mock data under three theme languages."
+          ? "任务主流程一致，在三主题下比较日常使用体验。"
+          : "Same daily task flow, compared across three theme languages."
       }
       moduleOrder={sceneInvariants.task.modules[locale]}
     >

@@ -283,6 +283,17 @@ const buildRecipeVarMap = (themeName: ThemeName): CssVarMap => {
     "--ui-slider-thumb-bg": r.slider.thumbBg,
     "--ui-slider-thumb-border": r.slider.thumbBorder,
     "--ui-slider-thumb-shadow": r.slider.thumbShadow,
+    "--ui-slider-thumb-mask": r.slider.thumbMask,
+
+    "--ui-chart-panel-bg": r.chart.panelBg,
+    "--ui-chart-panel-border": r.chart.panelBorder,
+    "--ui-chart-panel-overlay": r.chart.panelOverlay,
+    "--ui-chart-grid-line": r.chart.gridLine,
+    "--ui-chart-bar-radius": r.chart.barRadius,
+    "--ui-chart-bar-fill": r.chart.barFill,
+    "--ui-chart-bar-fill-alt": r.chart.barFillAlt,
+    "--ui-chart-bar-border": r.chart.barBorder,
+    "--ui-chart-bar-shadow": r.chart.barShadow,
 
     "--ui-modal-radius": r.modal.radius,
     "--ui-modal-max-width": r.modal.maxWidth,

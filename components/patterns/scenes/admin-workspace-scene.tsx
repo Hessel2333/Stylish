@@ -93,6 +93,8 @@ export const AdminWorkspaceScene = () => {
   }, [filteredQueue, selectedQueueTitle]);
 
   const selectedQueue = filteredQueue.find((item) => item.title === selectedQueueTitle) ?? filteredQueue[0] ?? null;
+  const primaryKpis = content.kpis.slice(0, 2);
+  const secondaryKpis = content.kpis.slice(2);
 
   const metricOptions = useMemo(
     () =>
@@ -201,8 +203,8 @@ export const AdminWorkspaceScene = () => {
             </div>
           </div>
 
-          <div className="grid gap-[var(--grid-gap)] sm:grid-cols-2 xl:grid-cols-4">
-            {content.kpis.map((kpi) => (
+          <div className="grid gap-[var(--grid-gap)] sm:grid-cols-2">
+            {primaryKpis.map((kpi) => (
               <Card key={kpi.label} className="interactive-panel">
                 <p className="text-sm text-token-secondary">{kpi.label}</p>
                 <p className="title-display mt-2 text-4xl text-token-primary">{kpi.value}</p>
@@ -212,6 +214,18 @@ export const AdminWorkspaceScene = () => {
           </div>
         </div>
       </section>
+
+      {secondaryKpis.length > 0 ? (
+        <section className="grid gap-3 md:grid-cols-2">
+          {secondaryKpis.map((kpi) => (
+            <article key={kpi.label} className="interactive-panel subtle-panel p-4">
+              <p className="text-sm text-token-secondary">{kpi.label}</p>
+              <p className="title-display mt-1 text-3xl text-token-primary">{kpi.value}</p>
+              <p className="mt-1 text-xs text-token-tertiary">{kpi.delta}</p>
+            </article>
+          ))}
+        </section>
+      ) : null}
 
       <section className="grid gap-[var(--grid-gap)] xl:grid-cols-[1fr_1fr]">
         <Card
@@ -247,12 +261,15 @@ export const AdminWorkspaceScene = () => {
               </Button>
             </div>
           </div>
-          <div className="h-56 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[linear-gradient(180deg,color-mix(in_hsl,var(--accent)_10%,white),transparent)] p-4">
-            <div className="grid h-full grid-cols-7 items-end gap-2">
+          <div className="ui-chart-panel">
+            <div className="ui-chart-grid-line is-top" />
+            <div className="ui-chart-grid-line is-mid" />
+            <div className="ui-chart-grid-line is-low" />
+            <div className="ui-chart-grid">
               {chartValues.map((value, idx) => (
                 <div
                   key={`${chartRange}-${idx}`}
-                  className="motion-fade-up rounded-t-[var(--radius-xs)] bg-[var(--accent)]/70"
+                  className={`ui-chart-bar motion-fade-up ${idx % 2 === 0 ? "" : "is-alt"}`}
                   style={{ height: `${value}%`, minHeight: "18%", animationDelay: `${idx * 40}ms` }}
                 />
               ))}

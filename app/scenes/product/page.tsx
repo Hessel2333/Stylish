@@ -13,8 +13,8 @@ export default function ProductScenePage() {
       sceneName={sceneInvariants.product.title[locale]}
       description={
         locale === "zh"
-          ? "同一转化叙事，在不同主题 token 下形成可比较的视觉表达。"
-          : "Same conversion narrative, different design expression through theme tokens."
+          ? "同一转化叙事，切换主题后只比较表达差异。"
+          : "One conversion storyline, theme switch only changes visual expression."
       }
       moduleOrder={sceneInvariants.product.modules[locale]}
     >

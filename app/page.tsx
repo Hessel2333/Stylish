@@ -5,7 +5,9 @@ import { PageShell } from "@/components/layout/page-shell";
 import { HeroPreview } from "@/components/patterns/home/hero-preview";
 import { SceneEntryGrid } from "@/components/patterns/home/scene-entry-grid";
 import { ThemeFeatureOverview } from "@/components/patterns/home/theme-feature-overview";
-import { Card } from "@/components/ui/card";
+import { ThemedLink } from "@/components/theme/themed-link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export default function HomePage() {
   const { locale } = useLocale();
@@ -14,47 +16,57 @@ export default function HomePage() {
     locale === "zh"
       ? {
           title: "Stylish：场景迁移演示",
-          description: "一个静态展示站点：在同一产品场景下，通过三种设计语言呈现不同表达。",
-          sectionTitle: "三大场景入口",
-          sectionDesc: "进入 Product Marketing、Admin Workspace、Task App 对比体验。场景结构固定，仅主题 token 变化。",
-          whyTitle: "为什么这不是组件陈列页",
-          whyDesc: "核心目标是场景可比较性：比较完整信息结构与工作流，而非孤立组件。",
-          methodTitle: "方法论",
-          methodDesc: "查看不变量层、Primitive/Semantic/Component token 与密度配置如何协作。"
+          description: "同一场景主线，在 Apple HIG、Material 3、Fluent 2 下呈现不同表达。",
+          sceneTitle: "从场景进入体验",
+          sceneDesc: "三条固定场景主线，统一信息结构，直接对比主题差异。",
+          methodEyebrow: "方法论预告",
+          methodTitle: "先体验，再理解系统",
+          methodDesc:
+            "首页聚焦可比较体验；完整的 token 分层、共享不变量与架构取舍，请在 Methodology 查看。",
+          methodCta: "阅读 Methodology"
         }
       : {
           title: "Stylish: Scenario Shift",
-          description:
-            "A static showcase that demonstrates how the same product scenarios can be expressed through three inspired design languages using one shared component system.",
-          sectionTitle: "Three Scenario Entry Points",
-          sectionDesc:
-            "Jump into Product Marketing, Admin Workspace, or Task App. The scene structure is fixed; only theme tokens change.",
-          whyTitle: "Why This Is Not a Component Gallery",
-          whyDesc:
-            "The objective is scenario comparability. We compare whole workflows and information hierarchy, not isolated button demos.",
-          methodTitle: "Methodology",
+          description: "One scenario storyline, three inspired design expressions.",
+          sceneTitle: "Enter By Scenario",
+          sceneDesc: "Three fixed scenario routes with shared structure for direct comparison.",
+          methodEyebrow: "Methodology Preview",
+          methodTitle: "Experience First, Then System Thinking",
           methodDesc:
-            "Read how invariants, primitive tokens, semantic tokens, component tokens, and density profiles work together."
+            "The homepage stays focused on demo flow. Visit Methodology for full token layers, invariants, and architecture rationale.",
+          methodCta: "Open Methodology"
         };
 
   return (
-    <PageShell title={copy.title} description={copy.description}>
-      <div className="grid gap-[var(--section-gap)]">
+    <PageShell title={copy.title} description={copy.description} showIntro={false}>
+      <div className="grid gap-[calc(var(--section-gap)*0.85)]">
         <HeroPreview />
 
-        <section>
-          <h2 className="title-display text-[var(--scale-h2)] text-token-primary">{copy.sectionTitle}</h2>
-          <p className="mt-2 text-token-secondary">{copy.sectionDesc}</p>
+        <section className="grid gap-[var(--space-lg)]">
+          <div className="max-w-3xl">
+            <h2 className="title-display text-[var(--scale-h2)] text-token-primary">{copy.sceneTitle}</h2>
+            <p className="mt-2 text-token-secondary">{copy.sceneDesc}</p>
+          </div>
           <div className="mt-[var(--space-lg)]">
             <SceneEntryGrid />
           </div>
         </section>
 
-        <ThemeFeatureOverview />
+        <section className="pt-[var(--space-sm)]">
+          <ThemeFeatureOverview />
+        </section>
 
-        <section className="grid gap-[var(--grid-gap)] md:grid-cols-2">
-          <Card title={copy.whyTitle} description={copy.whyDesc} />
-          <Card title={copy.methodTitle} description={copy.methodDesc} />
+        <section className="surface-panel grid gap-[var(--space-md)] p-[var(--panel-padding)] md:grid-cols-[1fr_auto] md:items-end">
+          <div className="max-w-2xl">
+            <Badge tone="neutral">{copy.methodEyebrow}</Badge>
+            <h2 className="title-display mt-3 text-[var(--scale-h2)] text-token-primary">{copy.methodTitle}</h2>
+            <p className="mt-2 text-token-secondary">{copy.methodDesc}</p>
+          </div>
+          <ThemedLink href="/methodology" className="md:justify-self-end">
+            <Button variant="secondary" size="lg">
+              {copy.methodCta}
+            </Button>
+          </ThemedLink>
         </section>
       </div>
     </PageShell>
