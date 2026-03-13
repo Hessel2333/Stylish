@@ -1,0 +1,118 @@
+/* Stylish reference theme sample: Google-like / Material-inspired
+   Purpose: visual reference only, not final production theme.
+   Focus: friendliness, clarity, modularity, readable states.
+*/
+:root {
+  --bg: #fcf8ff;
+  --surface: #f6f1f9;
+  --surface-strong: #efe7f6;
+  --text: #1d1b20;
+  --text-secondary: #5f5a67;
+  --border: #d6cfdd;
+  --border-strong: #c7bfd0;
+  --accent: #6750a4;
+  --accent-strong: #56408f;
+  --accent-soft: #e9ddff;
+  --accent-text: #ffffff;
+  --shadow-1: 0 2px 8px rgba(103, 80, 164, 0.08);
+  --shadow-2: 0 10px 26px rgba(103, 80, 164, 0.12);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --control-height: 44px;
+  --section-gap: 64px;
+  --panel-gap: 20px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Roboto, system-ui, sans-serif;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.app-bar,
+.nav-rail,
+.surface,
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.nav-rail {
+  padding: 20px 12px;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-strong) 100%);
+}
+
+.main {
+  padding: 24px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 20px;
+}
+
+.surface {
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.card-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-1);
+}
+
+.button-primary {
+  border: 0;
+  border-radius: 999px;
+  min-height: var(--control-height);
+  padding: 0 20px;
+  font-weight: 600;
+  color: var(--accent-text);
+  background: var(--accent);
+}
+
+.button-tonal {
+  border: 0;
+  border-radius: 999px;
+  min-height: var(--control-height);
+  padding: 0 20px;
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
+.input,
+.select,
+.segmented {
+  min-height: var(--control-height);
+  border-radius: 18px;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.supporting {
+  color: var(--text-secondary);
+}

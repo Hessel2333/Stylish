@@ -1,0 +1,129 @@
+/* Stylish reference theme sample: Microsoft-like / Fluent-inspired
+   Purpose: visual reference only, not final production theme.
+   Focus: productivity, structure, stronger boundaries, efficient density.
+*/
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-alt: #f3f5f8;
+  --surface-muted: #eceff3;
+  --text: #242424;
+  --text-secondary: #616161;
+  --border: #d5dbe3;
+  --border-strong: #c7ced8;
+  --accent: #0f6cbd;
+  --accent-strong: #0b5aa0;
+  --accent-soft: rgba(15, 108, 189, 0.1);
+  --shadow-1: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-2: 0 10px 24px rgba(15, 23, 42, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --control-height: 40px;
+  --section-gap: 48px;
+  --panel-gap: 16px;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #fafbfd 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--surface-alt);
+  border-right: 1px solid var(--border);
+  padding: 24px;
+}
+
+.header,
+.panel,
+.card,
+.toolbar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+}
+
+.main {
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius-lg);
+  min-height: 60px;
+  padding: 0 20px;
+}
+
+.content-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.panel,
+.card {
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.toolbar {
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+
+.button-primary {
+  border: 0;
+  border-radius: var(--radius-sm);
+  min-height: var(--control-height);
+  padding: 0 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+}
+
+.button-subtle {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  min-height: var(--control-height);
+  padding: 0 16px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.input,
+.select {
+  min-height: var(--control-height);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.eyebrow {
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.metric {
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.secondary {
+  color: var(--text-secondary);
+}

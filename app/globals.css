@@ -1,0 +1,109 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--scale-body);
+  line-height: 1.55;
+}
+
+.theme-root {
+  background-image: var(--bg-ambient);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.title-display {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.06;
+}
+
+.text-token-primary {
+  color: var(--text-primary);
+}
+
+.text-token-secondary {
+  color: var(--text-secondary);
+}
+
+.text-token-tertiary {
+  color: var(--text-tertiary);
+}
+
+.surface-panel {
+  background: color-mix(in hsl, var(--surface) 88%, white 12%);
+  border: var(--card-border-width) solid var(--border-default);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.subtle-panel {
+  background: color-mix(in hsl, var(--surface-muted) 86%, white 14%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.token-tab {
+  border-radius: var(--tabs-radius);
+  border: 1px solid var(--border-default);
+  transition-duration: var(--motion-base);
+  transition-timing-function: var(--ease-standard);
+}
+
+.token-tab-idle {
+  background: color-mix(in hsl, var(--surface-muted) 86%, white 14%);
+  color: var(--text-secondary);
+}
+
+.token-tab-idle:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.token-tab-active {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+  border-color: color-mix(in hsl, var(--accent) 36%, var(--border-strong) 64%);
+  box-shadow: var(--tabs-active-shadow);
+}
+
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  border-radius: calc(var(--tabs-radius) + 2px);
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in hsl, var(--surface-muted) 88%, white 12%);
+  padding: 3px;
+}
+
+.focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in hsl, var(--focus-ring) 22%, transparent);
+}
+
+@media (max-width: 820px) {
+  :root {
+    --content-max-width: 94vw;
+  }
+}

@@ -1,0 +1,68 @@
+"use client";
+
+import { themeDefinitions, themeOrder } from "@/lib/theme/registry";
+import type { ThemeName } from "@/lib/theme/types";
+import { cn } from "@/lib/utils/cn";
+import { useTheme } from "@/components/theme/theme-provider";
+import { useLocale } from "@/components/i18n/locale-provider";
+
+type ThemeSwitcherProps = {
+  compact?: boolean;
+};
+
+export const ThemeSwitcher = ({ compact = false }: ThemeSwitcherProps) => {
+  const { theme, setTheme } = useTheme();
+  const { locale } = useLocale();
+
+  return (
+    <div
+      className={cn("theme-switcher", compact ? "gap-1" : "gap-2")}
+      role="tablist"
+      aria-label={locale === "zh" ? "主题切换" : "Theme switcher"}
+    >
+      {themeOrder.map((name) => {
+        const active = name === theme;
+        const meta = themeDefinitions[name].meta;
+        const labelMap = {
+          "apple-like": locale === "zh" ? "苹果风格" : "Apple-like",
+          "google-like": locale === "zh" ? "谷歌风格" : "Google-like",
+          "microsoft-like": locale === "zh" ? "微软风格" : "Microsoft-like"
+        } as const;
+        const titleMap = {
+          "apple-like": locale === "zh" ? "极简、克制、留白驱动" : meta.inspiration,
+          "google-like": locale === "zh" ? "友好、圆润、状态清晰" : meta.inspiration,
+          "microsoft-like": locale === "zh" ? "结构化、生产力、密度更高" : meta.inspiration
+        } as const;
+
+        return (
+          <button
+            type="button"
+            key={name}
+            onClick={() => setTheme(name)}
+            role="tab"
+            aria-selected={active}
+            className={cn(
+              "token-tab inline-flex items-center justify-center transition-all",
+              compact ? "h-[var(--control-sm)] px-3 text-[0.76rem]" : "h-[var(--control-md)] px-4 text-sm",
+              active ? "token-tab-active" : "token-tab-idle"
+            )}
+            title={titleMap[name]}
+          >
+            {labelMap[name]}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+
+export const ThemeHint = ({ theme }: { theme: ThemeName }) => {
+  const { locale } = useLocale();
+  const meta = themeDefinitions[theme].meta;
+  const hintMap = {
+    "apple-like": "低噪音层次，弱边框与更大的呼吸感。",
+    "google-like": "更圆润、亲和、状态反馈更显性。",
+    "microsoft-like": "边界更明确、信息密度更高、操作导向。"
+  } as const;
+  return <p className="text-token-secondary text-sm">{locale === "zh" ? hintMap[theme] : meta.description}</p>;
+};
