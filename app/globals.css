@@ -347,46 +347,181 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--ui-badge-height);
+  gap: var(--ui-badge-gap, var(--space-xxs));
+  height: var(--ui-badge-height, 26px);
   padding: 0 var(--space-sm);
-  border-radius: var(--ui-badge-radius);
-  border: 1px solid var(--ui-badge-border, transparent);
+  border-radius: var(--ui-badge-radius, var(--radius-full));
+  border: var(--ui-badge-border, 1px solid transparent);
   font-size: 0.75rem;
-  font-weight: var(--ui-badge-font-weight);
-  letter-spacing: -0.01em;
+  font-weight: var(--ui-badge-font-weight, 600);
+  letter-spacing: var(--ui-badge-letter-spacing, -0.01em);
   line-height: 1;
   transition: background-color var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard),
     color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
 }
 
-.ui-badge-neutral {
-  background: var(--ui-badge-neutral-bg);
-  color: var(--ui-badge-neutral-color);
-  --ui-badge-border: var(--ui-badge-neutral-border);
+.ui-badge-indicator {
+  display: var(--ui-badge-indicator-display, none);
+  inline-size: var(--ui-badge-indicator-size, 0px);
+  block-size: var(--ui-badge-indicator-size, 0px);
+  opacity: var(--ui-badge-indicator-opacity, 0);
+  background: currentColor;
+  border-radius: var(--ui-badge-indicator-radius, 999px);
 }
 
-.ui-badge-accent {
-  background: var(--ui-badge-accent-bg);
-  color: var(--ui-badge-accent-color);
-  --ui-badge-border: var(--ui-badge-accent-border);
+/* Backward-compatible fallback for stale runtime chunks that still render
+   only `ui-badge + tone` without appearance classes. */
+.ui-badge.ui-badge-neutral {
+  background: var(--ui-badge-status-neutral-bg, color-mix(in hsl, var(--surface-muted) 84%, white 16%));
+  color: var(--ui-badge-status-neutral-color, var(--text-secondary));
+  --ui-badge-border: var(--ui-badge-status-neutral-border, 1px solid color-mix(in hsl, var(--border-default) 72%, transparent 28%));
 }
 
-.ui-badge-success {
-  background: var(--ui-badge-success-bg);
-  color: var(--ui-badge-success-color);
-  --ui-badge-border: var(--ui-badge-success-border);
+.ui-badge.ui-badge-accent {
+  background: var(--ui-badge-status-accent-bg, color-mix(in hsl, var(--accent) 24%, white 76%));
+  color: var(--ui-badge-status-accent-color, color-mix(in hsl, var(--accent) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-accent-border, 1px solid color-mix(in hsl, var(--accent) 40%, white 60%));
 }
 
-.ui-badge-warning {
-  background: var(--ui-badge-warning-bg);
-  color: var(--ui-badge-warning-color);
-  --ui-badge-border: var(--ui-badge-warning-border);
+.ui-badge.ui-badge-success {
+  background: var(--ui-badge-status-success-bg, color-mix(in hsl, var(--success) 24%, white 76%));
+  color: var(--ui-badge-status-success-color, color-mix(in hsl, var(--success) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-success-border, 1px solid color-mix(in hsl, var(--success) 40%, white 60%));
 }
 
-.ui-badge-danger {
-  background: var(--ui-badge-danger-bg);
-  color: var(--ui-badge-danger-color);
-  --ui-badge-border: var(--ui-badge-danger-border);
+.ui-badge.ui-badge-warning {
+  background: var(--ui-badge-status-warning-bg, color-mix(in hsl, var(--warning) 26%, white 74%));
+  color: var(--ui-badge-status-warning-color, color-mix(in hsl, var(--warning) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-warning-border, 1px solid color-mix(in hsl, var(--warning) 42%, white 58%));
+}
+
+.ui-badge.ui-badge-danger {
+  background: var(--ui-badge-status-danger-bg, color-mix(in hsl, var(--danger) 24%, white 76%));
+  color: var(--ui-badge-status-danger-color, color-mix(in hsl, var(--danger) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-danger-border, 1px solid color-mix(in hsl, var(--danger) 40%, white 60%));
+}
+
+.ui-badge-appearance-meta {
+  --ui-badge-height: var(--ui-badge-meta-height);
+  --ui-badge-radius: var(--ui-badge-meta-radius);
+  --ui-badge-font-weight: var(--ui-badge-meta-font-weight);
+  --ui-badge-letter-spacing: var(--ui-badge-meta-letter-spacing);
+  --ui-badge-indicator-display: var(--ui-badge-meta-indicator-display);
+  --ui-badge-indicator-size: var(--ui-badge-meta-indicator-size);
+  --ui-badge-indicator-opacity: var(--ui-badge-meta-indicator-opacity);
+  --ui-badge-indicator-radius: var(--ui-badge-meta-indicator-radius, 999px);
+}
+
+.ui-badge-appearance-status {
+  --ui-badge-height: var(--ui-badge-status-height);
+  --ui-badge-radius: var(--ui-badge-status-radius);
+  --ui-badge-font-weight: var(--ui-badge-status-font-weight);
+  --ui-badge-letter-spacing: var(--ui-badge-status-letter-spacing);
+  --ui-badge-indicator-display: var(--ui-badge-status-indicator-display, inline-flex);
+  --ui-badge-indicator-size: var(--ui-badge-status-indicator-size, 7px);
+  --ui-badge-indicator-opacity: var(--ui-badge-status-indicator-opacity, 0.6);
+  --ui-badge-indicator-radius: var(--ui-badge-status-indicator-radius, 999px);
+}
+
+.ui-badge-appearance-counter {
+  --ui-badge-height: var(--ui-badge-counter-height);
+  --ui-badge-radius: var(--ui-badge-counter-radius);
+  --ui-badge-font-weight: var(--ui-badge-counter-font-weight);
+  --ui-badge-letter-spacing: var(--ui-badge-counter-letter-spacing);
+  --ui-badge-indicator-display: var(--ui-badge-counter-indicator-display);
+  --ui-badge-indicator-size: var(--ui-badge-counter-indicator-size);
+  --ui-badge-indicator-opacity: var(--ui-badge-counter-indicator-opacity);
+  --ui-badge-indicator-radius: var(--ui-badge-counter-indicator-radius, 999px);
+}
+
+.ui-badge-appearance-meta.ui-badge-neutral {
+  background: var(--ui-badge-meta-neutral-bg, color-mix(in hsl, var(--surface-muted) 88%, white 12%));
+  color: var(--ui-badge-meta-neutral-color, var(--text-secondary));
+  --ui-badge-border: var(--ui-badge-meta-neutral-border, 1px solid color-mix(in hsl, var(--border-default) 70%, transparent 30%));
+}
+
+.ui-badge-appearance-meta.ui-badge-accent {
+  background: var(--ui-badge-meta-accent-bg, color-mix(in hsl, var(--accent) 14%, white 86%));
+  color: var(--ui-badge-meta-accent-color, var(--accent));
+  --ui-badge-border: var(--ui-badge-meta-accent-border, 1px solid color-mix(in hsl, var(--accent) 36%, white 64%));
+}
+
+.ui-badge-appearance-meta.ui-badge-success {
+  background: var(--ui-badge-meta-success-bg);
+  color: var(--ui-badge-meta-success-color);
+  --ui-badge-border: var(--ui-badge-meta-success-border);
+}
+
+.ui-badge-appearance-meta.ui-badge-warning {
+  background: var(--ui-badge-meta-warning-bg);
+  color: var(--ui-badge-meta-warning-color);
+  --ui-badge-border: var(--ui-badge-meta-warning-border);
+}
+
+.ui-badge-appearance-meta.ui-badge-danger {
+  background: var(--ui-badge-meta-danger-bg);
+  color: var(--ui-badge-meta-danger-color);
+  --ui-badge-border: var(--ui-badge-meta-danger-border);
+}
+
+.ui-badge-appearance-status.ui-badge-neutral {
+  background: var(--ui-badge-status-neutral-bg, color-mix(in hsl, var(--surface-muted) 84%, white 16%));
+  color: var(--ui-badge-status-neutral-color, var(--text-secondary));
+  --ui-badge-border: var(--ui-badge-status-neutral-border, 1px solid color-mix(in hsl, var(--border-default) 72%, transparent 28%));
+}
+
+.ui-badge-appearance-status.ui-badge-accent {
+  background: var(--ui-badge-status-accent-bg, color-mix(in hsl, var(--accent) 24%, white 76%));
+  color: var(--ui-badge-status-accent-color, color-mix(in hsl, var(--accent) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-accent-border, 1px solid color-mix(in hsl, var(--accent) 40%, white 60%));
+}
+
+.ui-badge-appearance-status.ui-badge-success {
+  background: var(--ui-badge-status-success-bg, color-mix(in hsl, var(--success) 24%, white 76%));
+  color: var(--ui-badge-status-success-color, color-mix(in hsl, var(--success) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-success-border, 1px solid color-mix(in hsl, var(--success) 40%, white 60%));
+}
+
+.ui-badge-appearance-status.ui-badge-warning {
+  background: var(--ui-badge-status-warning-bg, color-mix(in hsl, var(--warning) 26%, white 74%));
+  color: var(--ui-badge-status-warning-color, color-mix(in hsl, var(--warning) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-warning-border, 1px solid color-mix(in hsl, var(--warning) 42%, white 58%));
+}
+
+.ui-badge-appearance-status.ui-badge-danger {
+  background: var(--ui-badge-status-danger-bg, color-mix(in hsl, var(--danger) 24%, white 76%));
+  color: var(--ui-badge-status-danger-color, color-mix(in hsl, var(--danger) 84%, var(--text-primary) 16%));
+  --ui-badge-border: var(--ui-badge-status-danger-border, 1px solid color-mix(in hsl, var(--danger) 40%, white 60%));
+}
+
+.ui-badge-appearance-counter.ui-badge-neutral {
+  background: var(--ui-badge-counter-neutral-bg);
+  color: var(--ui-badge-counter-neutral-color);
+  --ui-badge-border: var(--ui-badge-counter-neutral-border);
+}
+
+.ui-badge-appearance-counter.ui-badge-accent {
+  background: var(--ui-badge-counter-accent-bg);
+  color: var(--ui-badge-counter-accent-color);
+  --ui-badge-border: var(--ui-badge-counter-accent-border);
+}
+
+.ui-badge-appearance-counter.ui-badge-success {
+  background: var(--ui-badge-counter-success-bg);
+  color: var(--ui-badge-counter-success-color);
+  --ui-badge-border: var(--ui-badge-counter-success-border);
+}
+
+.ui-badge-appearance-counter.ui-badge-warning {
+  background: var(--ui-badge-counter-warning-bg);
+  color: var(--ui-badge-counter-warning-color);
+  --ui-badge-border: var(--ui-badge-counter-warning-border);
+}
+
+.ui-badge-appearance-counter.ui-badge-danger {
+  background: var(--ui-badge-counter-danger-bg);
+  color: var(--ui-badge-counter-danger-color);
+  --ui-badge-border: var(--ui-badge-counter-danger-border);
 }
 
 .ui-table-shell {

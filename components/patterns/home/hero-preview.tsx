@@ -15,8 +15,8 @@ export const HeroPreview = () => {
     locale === "zh"
       ? {
           projectTag: "Stylish: Scenario Shift",
-          title: "同一产品场景，三种设计语言。",
-          desc: "先切换主题，再进入场景。你会看到结构不变、表达变化。",
+          title: "同一真实场景，三种设计语言。",
+          desc: "先切换主题，再进入 Product / Admin / Task。你会看到同一任务流如何被讲成完全不同的产品气质。",
           enter: "进入 Product 场景",
           readMethod: "稍后看方法论",
           switcherLabel: "实时切换主题",
@@ -31,8 +31,8 @@ export const HeroPreview = () => {
         }
       : {
           projectTag: "Stylish: Scenario Shift",
-          title: "One Product Scenario, Three Design Languages.",
-          desc: "Switch theme first, then enter scenes. Structure stays fixed while expression changes.",
+          title: "One Real Scenario, Three Design Languages.",
+          desc: "Switch theme first, then enter Product, Admin, and Task. The same workflow stays intact while the product expression changes dramatically.",
           enter: "Open Product Scene",
           readMethod: "Methodology Later",
           switcherLabel: "Live Theme Switch",

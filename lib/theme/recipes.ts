@@ -171,33 +171,122 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
         }
       },
       badge: {
-        height: "27px",
-        radius: p.radius.full,
-        fontWeight: "600",
-        neutral: {
-          bg: "rgba(255, 255, 255, 0.38)",
-          color: "color-mix(in hsl, var(--text-secondary) 88%, white 12%)",
-          border: "rgba(255, 255, 255, 0.6)"
+        meta: {
+          height: "27px",
+          radius: p.radius.full,
+          fontWeight: "600",
+          letterSpacing: "-0.01em",
+          indicator: {
+            display: "none",
+            shape: "round",
+            size: "0px",
+            opacity: "0"
+          },
+          tones: {
+            neutral: {
+              bg: "color-mix(in hsl, var(--surface-elevated) 86%, white 14%)",
+              color: "var(--text-secondary)",
+              border: "1px solid transparent"
+            },
+            accent: {
+              bg: "color-mix(in hsl, var(--accent) 13%, white 87%)",
+              color: "color-mix(in hsl, var(--accent) 84%, var(--text-primary) 16%)",
+              border: "1px solid transparent"
+            },
+            success: {
+              bg: "color-mix(in hsl, var(--success) 14%, white 86%)",
+              color: "color-mix(in hsl, var(--success) 82%, var(--text-primary) 18%)",
+              border: "1px solid transparent"
+            },
+            warning: {
+              bg: "color-mix(in hsl, var(--warning) 16%, white 84%)",
+              color: "color-mix(in hsl, var(--warning) 82%, var(--text-primary) 18%)",
+              border: "1px solid transparent"
+            },
+            danger: {
+              bg: "color-mix(in hsl, var(--danger) 14%, white 86%)",
+              color: "color-mix(in hsl, var(--danger) 82%, var(--text-primary) 18%)",
+              border: "1px solid transparent"
+            }
+          }
         },
-        accent: {
-          bg: "rgba(190, 224, 255, 0.5)",
-          color: "color-mix(in hsl, var(--accent) 82%, var(--text-primary) 18%)",
-          border: "rgba(255, 255, 255, 0.66)"
+        status: {
+          height: "28px",
+          radius: p.radius.full,
+          fontWeight: "620",
+          letterSpacing: "-0.01em",
+          indicator: {
+            display: "inline-flex",
+            shape: "round",
+            size: "8px",
+            opacity: "0.56"
+          },
+          tones: {
+            neutral: {
+              bg: "color-mix(in hsl, var(--surface-muted) 78%, white 22%)",
+              color: "var(--text-secondary)",
+              border: "1px solid color-mix(in hsl, var(--border-default) 58%, white 42%)"
+            },
+            accent: {
+              bg: "color-mix(in hsl, var(--accent) 30%, white 70%)",
+              color: "color-mix(in hsl, var(--accent) 84%, var(--text-primary) 16%)",
+              border: "1px solid color-mix(in hsl, var(--accent) 42%, white 58%)"
+            },
+            success: {
+              bg: "color-mix(in hsl, var(--success) 28%, white 72%)",
+              color: "color-mix(in hsl, var(--success) 82%, var(--text-primary) 18%)",
+              border: "1px solid color-mix(in hsl, var(--success) 38%, white 62%)"
+            },
+            warning: {
+              bg: "color-mix(in hsl, var(--warning) 30%, white 70%)",
+              color: "color-mix(in hsl, var(--warning) 82%, var(--text-primary) 18%)",
+              border: "1px solid color-mix(in hsl, var(--warning) 42%, white 58%)"
+            },
+            danger: {
+              bg: "color-mix(in hsl, var(--danger) 28%, white 72%)",
+              color: "color-mix(in hsl, var(--danger) 82%, var(--text-primary) 18%)",
+              border: "1px solid color-mix(in hsl, var(--danger) 40%, white 60%)"
+            }
+          }
         },
-        success: {
-          bg: "color-mix(in hsl, var(--success) 20%, rgba(255, 255, 255, 0.8))",
-          color: "var(--success)",
-          border: "rgba(255, 255, 255, 0.62)"
-        },
-        warning: {
-          bg: "color-mix(in hsl, var(--warning) 20%, rgba(255, 255, 255, 0.82))",
-          color: "var(--warning)",
-          border: "rgba(255, 255, 255, 0.62)"
-        },
-        danger: {
-          bg: "color-mix(in hsl, var(--danger) 18%, rgba(255, 255, 255, 0.82))",
-          color: "var(--danger)",
-          border: "rgba(255, 255, 255, 0.62)"
+        counter: {
+          height: "24px",
+          radius: p.radius.full,
+          fontWeight: "650",
+          letterSpacing: "0",
+          indicator: {
+            display: "none",
+            shape: "round",
+            size: "0px",
+            opacity: "0"
+          },
+          tones: {
+            neutral: {
+              bg: "color-mix(in hsl, var(--surface-muted) 74%, white 26%)",
+              color: "var(--text-secondary)",
+              border: "1px solid transparent"
+            },
+            accent: {
+              bg: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 85%, white 15%) 0%, var(--accent) 100%)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--accent) 56%, white 44%)"
+            },
+            success: {
+              bg: "color-mix(in hsl, var(--success) 80%, white 20%)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--success) 62%, white 38%)"
+            },
+            warning: {
+              bg: "color-mix(in hsl, var(--warning) 84%, white 16%)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--warning) 64%, white 36%)"
+            },
+            danger: {
+              bg: "color-mix(in hsl, var(--danger) 82%, white 18%)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--danger) 62%, white 38%)"
+            }
+          }
         }
       },
       table: {
@@ -420,34 +509,123 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
           hoverBorder: "color-mix(in hsl, var(--accent) 58%, white 42%)"
         }
       },
-    badge: {
-      height: "28px",
-      radius: p.radius.sm,
-      fontWeight: "650",
-      neutral: {
-        bg: "color-mix(in hsl, var(--surface-muted) 95%, white 5%)",
-        color: "var(--text-secondary)",
-        border: "color-mix(in hsl, var(--border-default) 84%, transparent 16%)"
-      },
-        accent: {
-          bg: "color-mix(in hsl, var(--accent-soft) 84%, white 16%)",
-          color: "color-mix(in hsl, var(--accent) 78%, var(--text-primary) 22%)",
-          border: "color-mix(in hsl, var(--accent) 52%, white 48%)"
+      badge: {
+        meta: {
+          height: "28px",
+          radius: p.radius.sm,
+          fontWeight: "620",
+          letterSpacing: "0",
+          indicator: {
+            display: "none",
+            shape: "round",
+            size: "0px",
+            opacity: "0"
+          },
+          tones: {
+            neutral: {
+              bg: "color-mix(in hsl, var(--surface) 96%, white 4%)",
+              color: "var(--text-secondary)",
+              border: "1px solid color-mix(in hsl, var(--border-default) 90%, transparent 10%)"
+            },
+            accent: {
+              bg: "color-mix(in hsl, var(--accent-soft) 88%, white 12%)",
+              color: "color-mix(in hsl, var(--accent) 82%, var(--text-primary) 18%)",
+              border: "1px solid color-mix(in hsl, var(--accent) 44%, var(--border-default) 56%)"
+            },
+            success: {
+              bg: "color-mix(in hsl, var(--success) 14%, white 86%)",
+              color: "color-mix(in hsl, var(--success) 84%, var(--text-primary) 16%)",
+              border: "1px solid color-mix(in hsl, var(--success) 40%, var(--border-default) 60%)"
+            },
+            warning: {
+              bg: "color-mix(in hsl, var(--warning) 16%, white 84%)",
+              color: "color-mix(in hsl, var(--warning) 84%, var(--text-primary) 16%)",
+              border: "1px solid color-mix(in hsl, var(--warning) 44%, var(--border-default) 56%)"
+            },
+            danger: {
+              bg: "color-mix(in hsl, var(--danger) 14%, white 86%)",
+              color: "color-mix(in hsl, var(--danger) 84%, var(--text-primary) 16%)",
+              border: "1px solid color-mix(in hsl, var(--danger) 40%, var(--border-default) 60%)"
+            }
+          }
         },
-        success: {
-          bg: "color-mix(in hsl, var(--success) 14%, white 86%)",
-          color: "var(--success)",
-          border: "color-mix(in hsl, var(--success) 42%, white 58%)"
+        status: {
+          height: "30px",
+          radius: p.radius.sm,
+          fontWeight: "650",
+          letterSpacing: "0",
+          indicator: {
+            display: "none",
+            shape: "round",
+            size: "0px",
+            opacity: "0"
+          },
+          tones: {
+            neutral: {
+              bg: "color-mix(in hsl, var(--surface) 95%, white 5%)",
+              color: "color-mix(in hsl, var(--text-secondary) 92%, var(--text-primary) 8%)",
+              border: "1.5px solid var(--border-strong)"
+            },
+            accent: {
+              bg: "color-mix(in hsl, var(--accent-soft) 66%, white 34%)",
+              color: "color-mix(in hsl, var(--accent) 84%, var(--text-primary) 16%)",
+              border: "1.5px solid color-mix(in hsl, var(--accent) 48%, var(--border-strong) 52%)"
+            },
+            success: {
+              bg: "color-mix(in hsl, var(--success) 24%, white 76%)",
+              color: "color-mix(in hsl, var(--success) 84%, var(--text-primary) 16%)",
+              border: "1.5px solid color-mix(in hsl, var(--success) 42%, var(--border-strong) 58%)"
+            },
+            warning: {
+              bg: "color-mix(in hsl, var(--warning) 26%, white 74%)",
+              color: "color-mix(in hsl, var(--warning) 84%, var(--text-primary) 16%)",
+              border: "1.5px solid color-mix(in hsl, var(--warning) 46%, var(--border-strong) 54%)"
+            },
+            danger: {
+              bg: "color-mix(in hsl, var(--danger) 24%, white 76%)",
+              color: "color-mix(in hsl, var(--danger) 84%, var(--text-primary) 16%)",
+              border: "1.5px solid color-mix(in hsl, var(--danger) 42%, var(--border-strong) 58%)"
+            }
+          }
         },
-        warning: {
-          bg: "color-mix(in hsl, var(--warning) 16%, white 84%)",
-          color: "var(--warning)",
-          border: "color-mix(in hsl, var(--warning) 44%, white 56%)"
-        },
-        danger: {
-          bg: "color-mix(in hsl, var(--danger) 14%, white 86%)",
-          color: "var(--danger)",
-          border: "color-mix(in hsl, var(--danger) 42%, white 58%)"
+        counter: {
+          height: "24px",
+          radius: p.radius.xs,
+          fontWeight: "700",
+          letterSpacing: "0.005em",
+          indicator: {
+            display: "none",
+            shape: "round",
+            size: "0px",
+            opacity: "0"
+          },
+          tones: {
+            neutral: {
+              bg: "color-mix(in hsl, var(--surface-muted) 90%, white 10%)",
+              color: "var(--text-secondary)",
+              border: "1px solid var(--border-default)"
+            },
+            accent: {
+              bg: "var(--accent)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--accent) 76%, black 24%)"
+            },
+            success: {
+              bg: "var(--success)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--success) 72%, black 28%)"
+            },
+            warning: {
+              bg: "var(--warning)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--warning) 72%, black 28%)"
+            },
+            danger: {
+              bg: "var(--danger)",
+              color: "#ffffff",
+              border: "1px solid color-mix(in hsl, var(--danger) 72%, black 28%)"
+            }
+          }
         }
       },
       table: {
@@ -670,33 +848,122 @@ const createRecipes = (theme: ThemeName): ComponentRecipes => {
       }
     },
     badge: {
-      height: "27px",
-      radius: p.radius.full,
-      fontWeight: "600",
-      neutral: {
-        bg: "color-mix(in hsl, var(--surface-elevated) 97%, white 3%)",
-        color: "var(--text-secondary)",
-        border: "color-mix(in hsl, var(--border-default) 82%, white 18%)"
+      meta: {
+        height: "26px",
+        radius: p.radius.xs,
+        fontWeight: "610",
+        letterSpacing: "0",
+        indicator: {
+          display: "none",
+          shape: "square",
+          size: "0px",
+          opacity: "0"
+        },
+        tones: {
+          neutral: {
+            bg: "color-mix(in hsl, var(--surface-elevated) 92%, white 8%)",
+            color: "var(--text-secondary)",
+            border: "1px solid color-mix(in hsl, var(--border-default) 86%, white 14%)"
+          },
+          accent: {
+            bg: "color-mix(in hsl, var(--accent-soft) 64%, white 36%)",
+            color: "color-mix(in hsl, var(--accent) 84%, var(--text-primary) 16%)",
+            border: "1px solid color-mix(in hsl, var(--accent) 42%, var(--border-default) 58%)"
+          },
+          success: {
+            bg: "color-mix(in hsl, var(--success) 16%, white 84%)",
+            color: "color-mix(in hsl, var(--success) 82%, var(--text-primary) 18%)",
+            border: "1px solid color-mix(in hsl, var(--success) 38%, var(--border-default) 62%)"
+          },
+          warning: {
+            bg: "color-mix(in hsl, var(--warning) 18%, white 82%)",
+            color: "color-mix(in hsl, var(--warning) 82%, var(--text-primary) 18%)",
+            border: "1px solid color-mix(in hsl, var(--warning) 40%, var(--border-default) 60%)"
+          },
+          danger: {
+            bg: "color-mix(in hsl, var(--danger) 16%, white 84%)",
+            color: "color-mix(in hsl, var(--danger) 82%, var(--text-primary) 18%)",
+            border: "1px solid color-mix(in hsl, var(--danger) 38%, var(--border-default) 62%)"
+          }
+        }
       },
-      accent: {
-        bg: "color-mix(in hsl, var(--accent-soft) 84%, white 16%)",
-        color: "color-mix(in hsl, var(--accent) 82%, var(--text-primary) 18%)",
-        border: "color-mix(in hsl, var(--accent) 52%, white 48%)"
+      status: {
+        height: "27px",
+        radius: p.radius.xs,
+        fontWeight: "630",
+        letterSpacing: "0.004em",
+        indicator: {
+          display: "inline-flex",
+          shape: "square",
+          size: "7px",
+          opacity: "0.72"
+        },
+        tones: {
+          neutral: {
+            bg: "color-mix(in hsl, var(--surface-elevated) 84%, white 16%)",
+            color: "var(--text-secondary)",
+            border: "1px solid color-mix(in hsl, var(--border-strong) 88%, white 12%)"
+          },
+          accent: {
+            bg: "color-mix(in hsl, var(--accent-soft) 46%, white 54%)",
+            color: "color-mix(in hsl, var(--accent) 86%, var(--text-primary) 14%)",
+            border: "1px solid color-mix(in hsl, var(--accent) 48%, var(--border-strong) 52%)"
+          },
+          success: {
+            bg: "color-mix(in hsl, var(--success) 24%, white 76%)",
+            color: "color-mix(in hsl, var(--success) 84%, var(--text-primary) 16%)",
+            border: "1px solid color-mix(in hsl, var(--success) 42%, var(--border-strong) 58%)"
+          },
+          warning: {
+            bg: "color-mix(in hsl, var(--warning) 25%, white 75%)",
+            color: "color-mix(in hsl, var(--warning) 84%, var(--text-primary) 16%)",
+            border: "1px solid color-mix(in hsl, var(--warning) 44%, var(--border-strong) 56%)"
+          },
+          danger: {
+            bg: "color-mix(in hsl, var(--danger) 24%, white 76%)",
+            color: "color-mix(in hsl, var(--danger) 84%, var(--text-primary) 16%)",
+            border: "1px solid color-mix(in hsl, var(--danger) 42%, var(--border-strong) 58%)"
+          }
+        }
       },
-      success: {
-        bg: "color-mix(in hsl, var(--success) 12%, white 88%)",
-        color: "var(--success)",
-        border: "color-mix(in hsl, var(--success) 32%, white 68%)"
-      },
-      warning: {
-        bg: "color-mix(in hsl, var(--warning) 12%, white 88%)",
-        color: "var(--warning)",
-        border: "color-mix(in hsl, var(--warning) 34%, white 66%)"
-      },
-      danger: {
-        bg: "color-mix(in hsl, var(--danger) 12%, white 88%)",
-        color: "var(--danger)",
-        border: "color-mix(in hsl, var(--danger) 32%, white 68%)"
+      counter: {
+        height: "23px",
+        radius: "10px",
+        fontWeight: "680",
+        letterSpacing: "0.01em",
+        indicator: {
+          display: "none",
+          shape: "square",
+          size: "0px",
+          opacity: "0"
+        },
+        tones: {
+          neutral: {
+            bg: "color-mix(in hsl, var(--surface-muted) 86%, white 14%)",
+            color: "var(--text-secondary)",
+            border: "1px solid color-mix(in hsl, var(--border-default) 90%, white 10%)"
+          },
+          accent: {
+            bg: "linear-gradient(180deg, color-mix(in hsl, var(--accent) 84%, white 16%) 0%, var(--accent) 100%)",
+            color: "#ffffff",
+            border: "1px solid color-mix(in hsl, var(--border-strong) 54%, var(--accent) 46%)"
+          },
+          success: {
+            bg: "color-mix(in hsl, var(--success) 82%, white 18%)",
+            color: "#ffffff",
+            border: "1px solid color-mix(in hsl, var(--success) 62%, black 38%)"
+          },
+          warning: {
+            bg: "color-mix(in hsl, var(--warning) 84%, white 16%)",
+            color: "#ffffff",
+            border: "1px solid color-mix(in hsl, var(--warning) 62%, black 38%)"
+          },
+          danger: {
+            bg: "color-mix(in hsl, var(--danger) 82%, white 18%)",
+            color: "#ffffff",
+            border: "1px solid color-mix(in hsl, var(--danger) 62%, black 38%)"
+          }
+        }
       }
     },
     table: {

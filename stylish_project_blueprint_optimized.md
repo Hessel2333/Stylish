@@ -1,5 +1,14 @@
 # Stylish 项目规范文档（优化版）
 
+## 文档状态（2026-03-13）
+本文件包含一部分“早期优化建议/术语替换过程”的历史内容。当前仓库已采用以下实现基线：
+- 主题命名：`Apple HIG` / `Material 3` / `Fluent 2`
+- 场景路由：`/scenes/product`、`/scenes/admin`、`/scenes/task`
+- 架构方向：单组件系统 + 主题 token + 组件 recipe
+- `Badge` 已按 `meta / status / counter` 三轨道拆分，主题间互不污染
+
+如与历史段落出现术语差异，请以 `README.md` 与代码实现为准。
+
 ## 0. 文档目标
 本文件用于作为 `Stylish` 项目的统一蓝图，服务于以下目标：
 - 统一项目定位、信息架构、场景设计与主题系统边界。
@@ -25,9 +34,9 @@
 **推荐统一方案：**
 - 展示文案：`Product Marketing`、`Admin Workspace`、`Task App`
 - URL 路由：
-  - `/scenarios/product`
-  - `/scenarios/admin`
-  - `/scenarios/task`
+  - `/scenes/product`
+  - `/scenes/admin`
+  - `/scenes/task`
 
 原因：
 - `Product Marketing` 比 `Product Showcase` 更像完整产品营销页。
@@ -177,9 +186,9 @@
 
 ### 3.2 推荐路由
 - `/`
-- `/scenarios/product`
-- `/scenarios/admin`
-- `/scenarios/task`
+- `/scenes/product`
+- `/scenes/admin`
+- `/scenes/task`
 - `/methodology`
 
 ### 3.3 导航原则
@@ -381,17 +390,17 @@
 
 ## 8. 三主题的进一步优化建议
 
-### 8.1 Apple-like
+### 8.1 Apple HIG（旧称 Apple-like）
 保留原文定义，但建议再加两条约束：
 - 不使用过度玻璃拟态，不把“高级感”误做成“模糊堆叠”。
 - 表达重点是安静、留白、表面层次，而不是炫技材质。
 
-### 8.2 Google-like
+### 8.2 Material 3（旧称 Google-like）
 保留原文定义，但建议再加两条约束：
 - 避免多色滥用，重点是“清晰、友好、可理解”，不是“热闹”。
 - 强化状态与层级，不要做成普通圆角 SaaS 模板。
 
-### 8.3 Microsoft-like
+### 8.3 Fluent 2（旧称 Microsoft-like）
 保留原文定义，但建议再加两条约束：
 - 保持现代和清爽，避免落入“传统企业后台”的沉闷感。
 - 强调结构与效率，而不是单纯加边框和压缩留白。
@@ -507,9 +516,9 @@ Codex 在执行时，建议额外加入以下硬约束：
 - Task App
 
 ### 三个主题
-- Apple-like
-- Google-like
-- Microsoft-like
+- Apple HIG
+- Material 3
+- Fluent 2
 
 ### 核心实现顺序
 1. 主题系统

@@ -1,38 +1,61 @@
 # Stylish：场景迁移演示
 
-在同一产品场景中，展示三种设计语言启发下的不同界面表达。
+在同一产品场景中，对比三种设计系统语义下的界面表达差异：**Apple HIG / Material 3 / Fluent 2**。
 
 仓库地址：[https://github.com/Hessel2333/Stylish](https://github.com/Hessel2333/Stylish)
 
 ## 项目动机
-多数主题切换只变颜色。Stylish 强调在保持场景结构不变的前提下，对比更深层的设计差异：留白、圆角、边界、阴影、密度、控件气质与动效节奏。
+多数“主题切换”只改颜色。Stylish 关注同场景可比较下的深层差异：留白、圆角、边界强度、阴影、密度、控件气质与动效节奏。
 
-## 场景说明
-- 产品营销（Product Marketing）
-  - 路由：`/scenes/product`
-  - 重点：首屏层级、价值传达、定价与信任构建
-- 管理工作台（Admin Workspace）
-  - 路由：`/scenes/admin`
-  - 重点：导航结构、信息密度、审批与数据处理效率
-- 任务应用（Task App）
-  - 路由：`/scenes/task`
-  - 重点：任务流、详情窗格、状态反馈与快速创建
+## 场景与路由
+- 首页（演示入口）：`/`
+- Product Marketing：`/scenes/product`
+- Admin Workspace：`/scenes/admin`
+- Task App：`/scenes/task`
+- Methodology：`/methodology`
 
-## 主题说明
-- Apple HIG
-  - 克制、安静、留白优先，边界更弱
-- Material 3
-  - 友好、清晰、圆润，状态反馈更明显
-- Fluent 2
-  - 结构化、生产力导向，边界更清晰、密度更高
+## 三种主题
+- Apple HIG：克制、安静、留白优先、弱边界
+- Material 3：亲和、状态可见、圆润、反馈明确
+- Fluent 2：结构化、效率导向、信息密度更高
 
-## 技术栈
-- Next.js（App Router）
-- TypeScript
-- Tailwind CSS v4
-- 静态 mock 内容（无后端、无数据库）
+## 当前技术路线（已对齐代码）
+### 1. 单组件系统 + 多主题映射
+- 只维护一套基础组件（Button/Input/Card/Table/Tabs/Badge/Modal...）
+- 不创建 `AppleButton`/`MaterialButton`/`FluentButton` 平行组件
 
-## 项目结构
+### 2. 分层主题架构
+- Invariants：场景模块集合、顺序、叙事主线、核心交互目标
+- Primitive Tokens：原始色值、圆角、间距、阴影、字号、控件高度、动效
+- Semantic Tokens：background/surface/text/border/accent/status 等语义层
+- Component Tokens：组件的结构参数与挂点
+- Component Recipes：由主题定义组件最终视觉决策
+- Density Profile：页面节奏与信息密度参数
+
+### 3. Source of Truth 职责边界
+- `lib/theme/*`：主题定义、tokens、recipes（视觉真相来源）
+- `lib/theme/css-vars.ts`：TS -> CSS 变量映射
+- `app/globals.css`：结构样式 + 消费变量，不做跨主题硬编码结论
+- `styles/tokens.css`：最小基础变量和底层兜底
+
+### 4. Badge 架构（本轮关键更新）
+- `Badge` 已拆为三条 recipe 轨道（`appearance`）：
+  - `meta`：说明性/信息性胶囊
+  - `status`：状态胶囊（可带指示点）
+  - `counter`：数字计数胶囊
+- 每条轨道均有独立 `tone` 配方（neutral/accent/success/warning/danger）
+- 三主题在 Badge 轨道上相互隔离，避免“修一处影响全站”
+- 为兼容本地旧 chunk，`globals.css` 增加了向后兼容 fallback 选择器
+
+## 多语言与主题持久化
+- 语言：`zh` / `en`，默认中文
+- 语言参数：`?lang=zh` / `?lang=en`
+- 语言存储：`localStorage['stylish.locale']`
+- 主题参数：`?theme=apple-hig|material-3|fluent-2`
+- 主题存储：`localStorage['stylish.theme']`
+- 兼容旧参数：`apple-like/google-like/microsoft-like` 自动映射到新主题名
+
+## 目录结构
 ```text
 app/
   page.tsx
@@ -40,104 +63,58 @@ app/
   scenes/product/page.tsx
   scenes/admin/page.tsx
   scenes/task/page.tsx
+  globals.css
 components/
-  layout/            # Header、页面壳层
-  i18n/              # 中英文切换与 locale 上下文
-  theme/             # 主题上下文、主题切换、带参数链接
-  ui/                # 统一基础组件
-  patterns/          # 场景级模式组合
-  scenes/            # 场景公共框架
+  layout/
+  i18n/
+  theme/
+  ui/
+  patterns/
+  scenes/
 lib/
-  theme/             # token 分层、registry、css 变量映射、持久化
-  content/           # 场景静态内容（中英文）
-  i18n/              # locale 类型与存储逻辑
-  utils/             # 工具函数
+  content/
+  i18n/
+  theme/
+    invariants.ts
+    primitives.ts
+    semantics.ts
+    components.ts
+    recipes.ts
+    density.ts
+    registry.ts
+    css-vars.ts
 styles/
-  tokens.css         # 基础 token 变量
-reference/           # 设计参考与风格参考
+  tokens.css
+reference/
+  reference.md
 ```
-
-## 主题系统
-项目采用分层 token 架构：
-
-1. 不变量层（Invariants）
-- 场景模块集合与顺序
-- 叙事主线与核心交互目标
-- 数据结构
-
-2. Primitive Tokens
-- 原始色值
-- 圆角、阴影、间距尺度
-- 字体映射、图标尺寸
-- 控件高度与动效参数
-
-3. Semantic Tokens
-- `background`、`surface`
-- `text primary/secondary`
-- `accent`、`border`、`focus ring`
-- `success/warning/danger`
-
-4. Component Tokens
-- Button/Input/Card/Table/Tabs/Modal 的视觉与交互参数
-
-5. Component Recipes
-- 以语义变体为入口（如 `button.primary`、`tabs.active`）
-- 由主题定义最终视觉决策（边框、背景、阴影、hover/active 行为）
-- 基础组件只保留结构与语义，不做主题结论
-
-6. Density / Layout Profile
-- section 间距、内容宽度、网格间距
-- 工具栏高度、面板内边距、表格密度
-
-## 主题职责边界
-- TypeScript（`lib/theme/*`）：
-  - 维护主题 definition、tokens、recipes（单一视觉真相来源）
-- CSS（`app/globals.css`）：
-  - 维护结构类与交互骨架，只消费 CSS 变量
-- `styles/tokens.css`：
-  - 仅保留极简全局基础，不再承载主题视觉覆写
-
-## 多语言说明
-- 支持中文与英文完整切换
-- 默认中文展示
-- URL 参数：`lang=zh` / `lang=en`
-- 本地持久化：`localStorage` 键 `stylish.locale`
 
 ## 本地运行
-1. 安装依赖
 ```bash
 npm install
-```
-
-2. 启动开发环境
-```bash
 npm run dev
 ```
+访问：[http://localhost:3000](http://localhost:3000)
 
-3. 访问
-- [http://localhost:3000](http://localhost:3000)
-
-## 构建与启动
+## 生产构建
 ```bash
 npm run build
 npm run start
 ```
 
 ## Vercel 部署
-1. 将仓库推送到 GitHub（[https://github.com/Hessel2333/Stylish](https://github.com/Hessel2333/Stylish)）。
-2. 在 Vercel 导入该仓库。
-3. Framework 选择 Next.js（通常可自动识别）。
+1. 推送到 GitHub：[https://github.com/Hessel2333/Stylish](https://github.com/Hessel2333/Stylish)
+2. 在 Vercel 导入仓库
+3. Framework 选择 Next.js（自动识别即可）
 4. Build Command：`npm run build`
-5. Output 使用 Next.js 默认输出。
-6. 点击 Deploy 完成发布。
+5. Deploy
 
 ## Inspired-by 免责声明
 本项目仅提炼 Apple、Google、Microsoft 相关设计语言的通用特征，不代表任何官方合作、授权或背书，不使用其 Logo、商标或品牌专有素材。
 
 ## Roadmap
-- Side-by-side 对比模式
-- 主题 token 检视页
-- 组件演示页
+- Side-by-side 比较模式
+- Token 可视化/检视页
+- 组件展示页
 - 主题导出
-- 密度滑杆
-- 降低动效开关
+- 动效与无障碍偏好开关

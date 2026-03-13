@@ -1,10 +1,11 @@
 import { cn } from "@/lib/utils/cn";
-
-type BadgeTone = "neutral" | "accent" | "success" | "warning" | "danger";
+import type { BadgeAppearance, BadgeTone } from "@/lib/theme/types";
 
 type BadgeProps = {
   children: React.ReactNode;
   tone?: BadgeTone;
+  appearance?: BadgeAppearance;
+  withIndicator?: boolean;
   className?: string;
 };
 
@@ -16,6 +17,19 @@ const toneClassMap: Record<BadgeTone, string> = {
   danger: "ui-badge-danger"
 };
 
-export const Badge = ({ children, tone = "neutral", className }: BadgeProps) => {
-  return <span className={cn("ui-badge", toneClassMap[tone], className)}>{children}</span>;
+const appearanceClassMap: Record<BadgeAppearance, string> = {
+  meta: "ui-badge-appearance-meta",
+  status: "ui-badge-appearance-status",
+  counter: "ui-badge-appearance-counter"
+};
+
+export const Badge = ({ children, tone = "neutral", appearance = "meta", withIndicator, className }: BadgeProps) => {
+  const shouldShowIndicator = withIndicator ?? (appearance === "status" && tone !== "neutral");
+
+  return (
+    <span className={cn("ui-badge", appearanceClassMap[appearance], toneClassMap[tone], className)}>
+      {shouldShowIndicator ? <span className="ui-badge-indicator" aria-hidden="true" /> : null}
+      <span>{children}</span>
+    </span>
+  );
 };

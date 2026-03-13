@@ -16,9 +16,9 @@ export default function HomePage() {
     locale === "zh"
       ? {
           title: "Stylish：场景迁移演示",
-          description: "同一场景主线，在 Apple HIG、Material 3、Fluent 2 下呈现不同表达。",
+          description: "同一真实产品场景，在 Apple HIG、Material 3、Fluent 2 下呈现三种完整产品表达。",
           sceneTitle: "从场景进入体验",
-          sceneDesc: "三条固定场景主线，统一信息结构，直接对比主题差异。",
+          sceneDesc: "不是切换三套页面，而是进入同一真实 Product / Admin / Task 场景，比较主题如何改变叙事、结构和任务流。",
           methodEyebrow: "方法论预告",
           methodTitle: "先体验，再理解系统",
           methodDesc:
@@ -27,9 +27,9 @@ export default function HomePage() {
         }
       : {
           title: "Stylish: Scenario Shift",
-          description: "One scenario storyline, three inspired design expressions.",
+          description: "One real product scenario, expressed as three complete design languages.",
           sceneTitle: "Enter By Scenario",
-          sceneDesc: "Three fixed scenario routes with shared structure for direct comparison.",
+          sceneDesc: "You are not switching between three separate demos. You are entering the same Product, Admin, and Task flows and comparing how theme changes narrative, structure, and task execution.",
           methodEyebrow: "Methodology Preview",
           methodTitle: "Experience First, Then System Thinking",
           methodDesc:

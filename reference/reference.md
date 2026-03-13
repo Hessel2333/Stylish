@@ -1,13 +1,22 @@
 下面是这个项目的补充参考资料，请你在实现 Stylish 时严格参考这些资料，但不要直接照搬品牌视觉，而是提炼“设计语言特征”，做成 inspired-by 的三套主题。
 
+## 状态说明（2026-03-13）
+- 本文保留了早期术语（`Apple-like / Google-like / Microsoft-like`）。
+- 当前仓库统一命名为：`Apple HIG / Material 3 / Fluent 2`。
+- 当前场景路由统一为：`/scenes/product`、`/scenes/admin`、`/scenes/task`。
+- 术语映射关系：
+  - `Apple-like` -> `Apple HIG`
+  - `Google-like` -> `Material 3`
+  - `Microsoft-like` -> `Fluent 2`
+
 项目名称：
 Stylish
 
 项目目标：
 构建一个可部署到 Vercel 的静态展示网站，展示同一套页面结构在三种设计语言下的差异：
-- Apple-like
-- Google-like
-- Microsoft-like
+- Apple HIG
+- Material 3
+- Fluent 2
 
 请注意：
 - 不要直接复制 Apple、Google、Microsoft 的官方页面
@@ -34,7 +43,7 @@ Stylish
 请你把这些差异沉淀为可切换的 theme tokens，而不是写死在页面里。
 
 ====================
-二、Apple-like 参考
+二、Apple HIG 参考（旧称 Apple-like）
 ====================
 
 目标感觉：
@@ -68,7 +77,7 @@ Figma 参考：
 - 更精致的标题与正文比例
 
 ====================
-三、Google-like 参考
+三、Material 3 参考（旧称 Google-like）
 ====================
 
 目标感觉：
@@ -100,7 +109,7 @@ Figma 参考：
 - 页面层次清楚，但不要太厚重
 
 ====================
-四、Microsoft-like 参考
+四、Fluent 2 参考（旧称 Microsoft-like）
 ====================
 
 目标感觉：

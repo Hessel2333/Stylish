@@ -177,6 +177,25 @@ type BadgeToneRecipe = {
   border: string;
 };
 
+export type BadgeTone = "neutral" | "accent" | "success" | "warning" | "danger";
+export type BadgeAppearance = "meta" | "status" | "counter";
+
+type BadgeIndicatorRecipe = {
+  display: "none" | "inline-flex";
+  shape: "round" | "square";
+  size: string;
+  opacity: string;
+};
+
+type BadgeAppearanceRecipe = {
+  height: string;
+  radius: string;
+  fontWeight: string;
+  letterSpacing: string;
+  indicator: BadgeIndicatorRecipe;
+  tones: Record<BadgeTone, BadgeToneRecipe>;
+};
+
 export type ComponentRecipes = {
   surface: {
     panel: SurfaceRecipe;
@@ -224,14 +243,9 @@ export type ComponentRecipes = {
     active: TabStateRecipe;
   };
   badge: {
-    height: string;
-    radius: string;
-    fontWeight: string;
-    neutral: BadgeToneRecipe;
-    accent: BadgeToneRecipe;
-    success: BadgeToneRecipe;
-    warning: BadgeToneRecipe;
-    danger: BadgeToneRecipe;
+    meta: BadgeAppearanceRecipe;
+    status: BadgeAppearanceRecipe;
+    counter: BadgeAppearanceRecipe;
   };
   table: {
     shell: {
