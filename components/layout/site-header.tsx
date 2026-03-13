@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeSwitcher } from "@/components/theme/theme-switcher";
+import { AppearanceSwitcher } from "@/components/theme/appearance-switcher";
 import { ThemedLink } from "@/components/theme/themed-link";
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
 import { useLocale } from "@/components/i18n/locale-provider";
@@ -67,6 +68,7 @@ export const SiteHeader = () => {
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher />
+          <AppearanceSwitcher />
           <ThemeSwitcher compact />
           <a
             className="hidden rounded-[var(--radius-sm)] border border-[var(--border-default)] px-3 py-2 text-xs text-token-secondary transition hover:border-[var(--border-strong)] hover:text-token-primary sm:inline-flex"

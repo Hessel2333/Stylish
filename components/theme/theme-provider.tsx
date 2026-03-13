@@ -4,26 +4,43 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { defaultTheme } from "@/lib/theme/registry";
 import { applyThemeCssVars } from "@/lib/theme/css-vars";
 import {
+  appearanceQueryKey,
+  defaultAppearanceMode,
+  getInitialAppearance,
+  replaceAppearanceInSearch,
+  writeAppearanceToStorage
+} from "@/lib/theme/appearance";
+import {
   getInitialTheme,
   replaceThemeInSearch,
   themeQueryKey,
   writeThemeToStorage
 } from "@/lib/theme/storage";
-import type { ThemeName } from "@/lib/theme/types";
+import type { AppearanceMode, ThemeName } from "@/lib/theme/types";
 
 type ThemeContextValue = {
   theme: ThemeName;
+  appearance: AppearanceMode;
   setTheme: (theme: ThemeName) => void;
+  setAppearance: (mode: AppearanceMode) => void;
   themedHref: (href: string) => string;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const appendThemeParam = (href: string, theme: ThemeName) => {
+const normalizeAppearance = (theme: ThemeName, appearance: AppearanceMode): AppearanceMode =>
+  theme === "apple-hig" ? appearance : "standard";
+
+const appendThemeParam = (href: string, theme: ThemeName, appearance: AppearanceMode) => {
   const [base, hash = ""] = href.split("#");
   const [pathname, search = ""] = base.split("?");
   const params = new URLSearchParams(search);
   params.set(themeQueryKey, theme);
+  if (theme === "apple-hig") {
+    params.set(appearanceQueryKey, appearance);
+  } else {
+    params.delete(appearanceQueryKey);
+  }
   const queryString = params.toString();
   const rebuilt = queryString ? `${pathname}?${queryString}` : pathname;
   return hash ? `${rebuilt}#${hash}` : rebuilt;
@@ -31,9 +48,13 @@ const appendThemeParam = (href: string, theme: ThemeName) => {
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<ThemeName>(defaultTheme);
+  const [appearance, setAppearance] = useState<AppearanceMode>(defaultAppearanceMode);
 
   useEffect(() => {
-    setTheme(getInitialTheme());
+    const initialTheme = getInitialTheme();
+    const initialAppearance = normalizeAppearance(initialTheme, getInitialAppearance());
+    setTheme(initialTheme);
+    setAppearance(initialAppearance);
   }, []);
 
   useEffect(() => {
@@ -42,15 +63,32 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     replaceThemeInSearch(theme);
   }, [theme]);
 
-  const themedHref = useCallback((href: string) => appendThemeParam(href, theme), [theme]);
+  useEffect(() => {
+    const nextAppearance = normalizeAppearance(theme, appearance);
+    if (nextAppearance !== appearance) {
+      setAppearance(nextAppearance);
+      return;
+    }
+
+    writeAppearanceToStorage(nextAppearance);
+    replaceAppearanceInSearch(nextAppearance);
+
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-appearance", nextAppearance);
+    }
+  }, [appearance, theme]);
+
+  const themedHref = useCallback((href: string) => appendThemeParam(href, theme, appearance), [appearance, theme]);
 
   const value = useMemo(
     () => ({
       theme,
+      appearance,
       setTheme,
+      setAppearance,
       themedHref
     }),
-    [theme, themedHref]
+    [appearance, theme, themedHref]
   );
 
   return (

@@ -17,7 +17,7 @@ export const HeroPreview = () => {
       ? {
           titleTop: "同一产品场景，",
           titleBottom: "三种设计表达",
-          desc: "在统一信息架构下，对比 Product Marketing、Admin Workspace、Task App 在 Apple-like / Google-like / Microsoft-like 主题中的表达差异。",
+          desc: "在统一信息架构下，对比 Product Marketing、Admin Workspace、Task App 在 Apple HIG / Material 3 / Fluent 2 主题中的表达差异。",
           enter: "进入产品场景",
           readMethod: "查看方法论",
           controlTitle: "实时主题控制",
@@ -30,7 +30,7 @@ export const HeroPreview = () => {
       : {
           titleTop: "Same Product Scenario,",
           titleBottom: "Three Design Expressions",
-          desc: "Compare how Product Marketing, Admin Workspace, and Task App experience change under Apple-like, Google-like, and Microsoft-like inspiration while preserving one shared information architecture.",
+          desc: "Compare how Product Marketing, Admin Workspace, and Task App experience change under Apple HIG, Material 3, and Fluent 2 while preserving one shared information architecture.",
           enter: "Enter Product Scene",
           readMethod: "Read Methodology",
           controlTitle: "Live Theme Control",

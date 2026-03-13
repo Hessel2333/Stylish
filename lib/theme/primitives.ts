@@ -1,7 +1,7 @@
 import type { PrimitiveTokens, ThemeName } from "@/lib/theme/types";
 
 export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
-  "apple-like": {
+  "apple-hig": {
     color: {
       bgBase: "#f5f6f8",
       bgAmbient: "radial-gradient(1200px 600px at 10% 0%, rgba(96,165,250,0.14), transparent 55%), radial-gradient(800px 420px at 90% 10%, rgba(255,255,255,0.75), transparent 60%)",
@@ -71,7 +71,7 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
       easeEmphasis: "cubic-bezier(0.16, 1, 0.3, 1)"
     }
   },
-  "google-like": {
+  "material-3": {
     color: {
       bgBase: "#f8f7fb",
       bgAmbient: "radial-gradient(900px 560px at 7% 0%, rgba(37, 99, 235, 0.14), transparent 62%), radial-gradient(1100px 700px at 100% 12%, rgba(147, 197, 253, 0.22), transparent 64%)",
@@ -141,7 +141,7 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
       easeEmphasis: "cubic-bezier(0.2, 0, 0, 1)"
     }
   },
-  "microsoft-like": {
+  "fluent-2": {
     color: {
       bgBase: "#f4f6f8",
       bgAmbient: "linear-gradient(165deg, rgba(255,255,255,0.9) 0%, rgba(240,243,247,0.9) 60%, rgba(228,234,242,0.9) 100%)",

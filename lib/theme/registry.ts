@@ -5,52 +5,52 @@ import { semanticTokensByTheme } from "@/lib/theme/semantics";
 import type { ThemeDefinition, ThemeName } from "@/lib/theme/types";
 
 export const themeDefinitions: Record<ThemeName, ThemeDefinition> = {
-  "apple-like": {
+  "apple-hig": {
     meta: {
-      name: "apple-like",
-      label: "Apple-like",
+      name: "apple-hig",
+      label: "Apple HIG",
       inspiration: "Minimal, quiet, whitespace-first",
       description: "Low-noise layers with subtle borders and generous pacing."
     },
-    primitives: primitiveTokensByTheme["apple-like"],
-    semantics: semanticTokensByTheme["apple-like"],
-    components: componentTokensByTheme["apple-like"],
-    density: densityProfileByTheme["apple-like"]
+    primitives: primitiveTokensByTheme["apple-hig"],
+    semantics: semanticTokensByTheme["apple-hig"],
+    components: componentTokensByTheme["apple-hig"],
+    density: densityProfileByTheme["apple-hig"]
   },
-  "google-like": {
+  "material-3": {
     meta: {
-      name: "google-like",
-      label: "Google-like",
+      name: "material-3",
+      label: "Material 3",
       inspiration: "Friendly clarity with approachable controls",
       description: "Rounded interaction model with visible states and lively accents."
     },
-    primitives: primitiveTokensByTheme["google-like"],
-    semantics: semanticTokensByTheme["google-like"],
-    components: componentTokensByTheme["google-like"],
-    density: densityProfileByTheme["google-like"]
+    primitives: primitiveTokensByTheme["material-3"],
+    semantics: semanticTokensByTheme["material-3"],
+    components: componentTokensByTheme["material-3"],
+    density: densityProfileByTheme["material-3"]
   },
-  "microsoft-like": {
+  "fluent-2": {
     meta: {
-      name: "microsoft-like",
-      label: "Microsoft-like",
+      name: "fluent-2",
+      label: "Fluent 2",
       inspiration: "Structured productivity for modern workspaces",
       description: "Clear boundaries, stronger navigation, and higher information density."
     },
-    primitives: primitiveTokensByTheme["microsoft-like"],
-    semantics: semanticTokensByTheme["microsoft-like"],
-    components: componentTokensByTheme["microsoft-like"],
-    density: densityProfileByTheme["microsoft-like"]
+    primitives: primitiveTokensByTheme["fluent-2"],
+    semantics: semanticTokensByTheme["fluent-2"],
+    components: componentTokensByTheme["fluent-2"],
+    density: densityProfileByTheme["fluent-2"]
   }
 };
 
-export const defaultTheme: ThemeName = "apple-like";
+export const defaultTheme: ThemeName = "apple-hig";
 
-export const themeOrder: ThemeName[] = ["apple-like", "google-like", "microsoft-like"];
+export const themeOrder: ThemeName[] = ["apple-hig", "material-3", "fluent-2"];
 
 export const themeLabelMap: Record<ThemeName, string> = {
-  "apple-like": "Apple-like",
-  "google-like": "Google-like",
-  "microsoft-like": "Microsoft-like"
+  "apple-hig": "Apple HIG",
+  "material-3": "Material 3",
+  "fluent-2": "Fluent 2"
 };
 
 export const isThemeName = (value: string | null | undefined): value is ThemeName =>

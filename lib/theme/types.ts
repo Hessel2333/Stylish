@@ -1,4 +1,5 @@
-export type ThemeName = "apple-like" | "google-like" | "microsoft-like";
+export type ThemeName = "apple-hig" | "material-3" | "fluent-2";
+export type AppearanceMode = "standard" | "liquid-glass";
 
 export type PrimitiveTokens = {
   color: {

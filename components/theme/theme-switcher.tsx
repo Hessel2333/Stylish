@@ -24,14 +24,14 @@ export const ThemeSwitcher = ({ compact = false }: ThemeSwitcherProps) => {
         const active = name === theme;
         const meta = themeDefinitions[name].meta;
         const labelMap = {
-          "apple-like": locale === "zh" ? "苹果风格" : "Apple-like",
-          "google-like": locale === "zh" ? "谷歌风格" : "Google-like",
-          "microsoft-like": locale === "zh" ? "微软风格" : "Microsoft-like"
+          "apple-hig": locale === "zh" ? "Apple HIG" : "Apple HIG",
+          "material-3": locale === "zh" ? "Material 3" : "Material 3",
+          "fluent-2": locale === "zh" ? "Fluent 2" : "Fluent 2"
         } as const;
         const titleMap = {
-          "apple-like": locale === "zh" ? "极简、克制、留白驱动" : meta.inspiration,
-          "google-like": locale === "zh" ? "友好、圆润、状态清晰" : meta.inspiration,
-          "microsoft-like": locale === "zh" ? "结构化、生产力、密度更高" : meta.inspiration
+          "apple-hig": locale === "zh" ? "苹果人机界面指南风格" : meta.inspiration,
+          "material-3": locale === "zh" ? "Material Design 3 风格" : meta.inspiration,
+          "fluent-2": locale === "zh" ? "Fluent 2 设计风格" : meta.inspiration
         } as const;
 
         return (
@@ -60,9 +60,9 @@ export const ThemeHint = ({ theme }: { theme: ThemeName }) => {
   const { locale } = useLocale();
   const meta = themeDefinitions[theme].meta;
   const hintMap = {
-    "apple-like": "低噪音层次，弱边框与更大的呼吸感。",
-    "google-like": "更圆润、亲和、状态反馈更显性。",
-    "microsoft-like": "边界更明确、信息密度更高、操作导向。"
+    "apple-hig": "Apple HIG：低噪音层次，弱边框与更大的呼吸感。",
+    "material-3": "Material 3：更圆润、亲和、状态反馈更显性。",
+    "fluent-2": "Fluent 2：边界更明确、信息密度更高、操作导向。"
   } as const;
   return <p className="text-token-secondary text-sm">{locale === "zh" ? hintMap[theme] : meta.description}</p>;
 };

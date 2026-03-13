@@ -3,6 +3,21 @@ import type { ThemeName } from "@/lib/theme/types";
 
 export const themeQueryKey = "theme";
 export const themeStorageKey = "stylish.theme";
+const legacyThemeMap: Record<string, ThemeName> = {
+  "apple-like": "apple-hig",
+  "google-like": "material-3",
+  "microsoft-like": "fluent-2"
+};
+
+const normalizeThemeName = (value: string | null | undefined): ThemeName | null => {
+  if (!value) {
+    return null;
+  }
+  if (isThemeName(value)) {
+    return value;
+  }
+  return legacyThemeMap[value] ?? null;
+};
 
 export const readThemeFromStorage = (): ThemeName | null => {
   if (typeof window === "undefined") {
@@ -10,7 +25,7 @@ export const readThemeFromStorage = (): ThemeName | null => {
   }
 
   const stored = window.localStorage.getItem(themeStorageKey);
-  return isThemeName(stored) ? stored : null;
+  return normalizeThemeName(stored);
 };
 
 export const writeThemeToStorage = (theme: ThemeName) => {
@@ -26,7 +41,7 @@ export const readThemeFromSearch = (): ThemeName | null => {
   }
 
   const query = new URLSearchParams(window.location.search).get(themeQueryKey);
-  return isThemeName(query) ? query : null;
+  return normalizeThemeName(query);
 };
 
 export const replaceThemeInSearch = (theme: ThemeName) => {

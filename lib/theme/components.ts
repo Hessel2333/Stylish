@@ -4,7 +4,7 @@ import { primitiveTokensByTheme } from "@/lib/theme/primitives";
 const createComponentTokens = (theme: ThemeName): ComponentTokens => {
   const p = primitiveTokensByTheme[theme];
 
-  if (theme === "apple-like") {
+  if (theme === "apple-hig") {
     return {
       button: {
         radius: p.radius.full,
@@ -39,7 +39,7 @@ const createComponentTokens = (theme: ThemeName): ComponentTokens => {
     };
   }
 
-  if (theme === "google-like") {
+  if (theme === "material-3") {
     return {
       button: {
         radius: p.radius.full,
@@ -109,7 +109,7 @@ const createComponentTokens = (theme: ThemeName): ComponentTokens => {
 };
 
 export const componentTokensByTheme: Record<ThemeName, ComponentTokens> = {
-  "apple-like": createComponentTokens("apple-like"),
-  "google-like": createComponentTokens("google-like"),
-  "microsoft-like": createComponentTokens("microsoft-like")
+  "apple-hig": createComponentTokens("apple-hig"),
+  "material-3": createComponentTokens("material-3"),
+  "fluent-2": createComponentTokens("fluent-2")
 };

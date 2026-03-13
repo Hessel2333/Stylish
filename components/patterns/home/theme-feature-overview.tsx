@@ -96,9 +96,9 @@ export const ThemeFeatureOverview = () => {
           <thead>
             <tr className="bg-[var(--surface-muted)] text-token-secondary">
               <th className="px-4 py-3 font-semibold">{locale === "zh" ? "维度" : "Dimension"}</th>
-              <th className="px-4 py-3 font-semibold">Apple-like</th>
-              <th className="px-4 py-3 font-semibold">Google-like</th>
-              <th className="px-4 py-3 font-semibold">Microsoft-like</th>
+              <th className="px-4 py-3 font-semibold">Apple HIG</th>
+              <th className="px-4 py-3 font-semibold">Material 3</th>
+              <th className="px-4 py-3 font-semibold">Fluent 2</th>
             </tr>
           </thead>
           <tbody>

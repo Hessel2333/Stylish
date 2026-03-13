@@ -1,7 +1,7 @@
 import type { DensityProfile, ThemeName } from "@/lib/theme/types";
 
 export const densityProfileByTheme: Record<ThemeName, DensityProfile> = {
-  "apple-like": {
+  "apple-hig": {
     density: "airy",
     contentMaxWidth: "1180px",
     sectionGap: "var(--space-xxl)",
@@ -10,7 +10,7 @@ export const densityProfileByTheme: Record<ThemeName, DensityProfile> = {
     panelPadding: "var(--space-xl)",
     tableDensity: "comfortable"
   },
-  "google-like": {
+  "material-3": {
     density: "balanced",
     contentMaxWidth: "1220px",
     sectionGap: "calc(var(--space-xxl) - 6px)",
@@ -19,7 +19,7 @@ export const densityProfileByTheme: Record<ThemeName, DensityProfile> = {
     panelPadding: "var(--space-lg)",
     tableDensity: "balanced"
   },
-  "microsoft-like": {
+  "fluent-2": {
     density: "compact",
     contentMaxWidth: "1280px",
     sectionGap: "calc(var(--space-xxl) - 18px)",
