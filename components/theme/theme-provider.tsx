@@ -30,11 +30,9 @@ const appendThemeParam = (href: string, theme: ThemeName) => {
 };
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<ThemeName>(defaultTheme);
-
-  useEffect(() => {
-    setTheme(getInitialTheme());
-  }, []);
+  const [theme, setTheme] = useState<ThemeName>(() =>
+    typeof window === "undefined" ? defaultTheme : getInitialTheme()
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") {

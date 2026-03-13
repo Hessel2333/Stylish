@@ -29,7 +29,7 @@ export const Tabs = ({ items, defaultItem, onChange, className, ariaLabel = "tab
               onChange?.(item);
             }}
             className={cn(
-              "token-tab h-[var(--control-sm)] px-3 text-sm",
+              "token-tab focus-ring h-[var(--control-sm)] px-3 text-sm",
               isActive ? "token-tab-active" : "token-tab-idle"
             )}
           >

@@ -15,7 +15,7 @@ export const Input = ({ className, label, helperText, id, ...props }: InputProps
       <input
         id={inputId}
         className={cn(
-          "ui-input focus-ring h-[var(--control-md)] w-full rounded-[var(--input-radius)] px-3 text-[var(--text-primary)] transition-colors duration-[var(--motion-fast)] placeholder:text-token-tertiary",
+          "ui-input h-[var(--control-md)] w-full rounded-[var(--ui-input-radius,var(--input-radius))] px-3 text-[var(--text-primary)] transition-colors duration-[var(--motion-fast)]",
           className
         )}
         {...props}

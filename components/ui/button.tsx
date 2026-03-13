@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils/cn";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+type ButtonVariant = "primary" | "secondary" | "outlined" | "ghost" | "danger";
 type ButtonSize = "sm" | "md" | "lg";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -18,6 +18,7 @@ const sizeClassMap: Record<ButtonSize, string> = {
 const variantClassMap: Record<ButtonVariant, string> = {
   primary: "ui-button-primary",
   secondary: "ui-button-secondary",
+  outlined: "ui-button-outlined",
   ghost: "ui-button-ghost",
   danger: "ui-button-danger"
 };

@@ -44,20 +44,25 @@ body {
 }
 
 .surface-panel {
-  background: var(--ui-surface-panel-bg);
-  border: var(--card-border-width) solid var(--ui-surface-panel-border);
+  background: var(--ui-surface-panel-bg, var(--surface));
+  border: 1px solid var(--ui-surface-panel-border, var(--border-default));
   border-radius: var(--card-radius);
-  box-shadow: var(--ui-surface-panel-shadow);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow: var(--ui-surface-panel-shadow, none);
+  backdrop-filter: blur(var(--ui-surface-panel-backdrop-blur, 0px))
+    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
+  -webkit-backdrop-filter: blur(var(--ui-surface-panel-backdrop-blur, 0px))
+    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
 }
 
 .subtle-panel {
-  background: var(--ui-subtle-panel-bg);
-  border: 1px solid var(--ui-subtle-panel-border);
+  background: var(--ui-subtle-panel-bg, var(--surface-muted));
+  border: 1px solid var(--ui-subtle-panel-border, var(--border-subtle));
   border-radius: var(--radius-md);
-  backdrop-filter: blur(calc(var(--glass-blur) * 0.72)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.72)) saturate(var(--glass-saturate));
+  box-shadow: var(--ui-subtle-panel-shadow, none);
+  backdrop-filter: blur(var(--ui-subtle-panel-backdrop-blur, 0px))
+    saturate(var(--ui-subtle-panel-backdrop-saturate, 100%));
+  -webkit-backdrop-filter: blur(var(--ui-subtle-panel-backdrop-blur, 0px))
+    saturate(var(--ui-subtle-panel-backdrop-saturate, 100%));
 }
 
 .eyebrow {
@@ -73,52 +78,211 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: var(--button-radius);
+  border-radius: var(--ui-btn-radius, var(--button-radius));
   font-weight: 600;
-  letter-spacing: var(--button-letter-spacing);
-  border: 1px solid transparent;
+  letter-spacing: var(--ui-btn-letter-spacing, var(--button-letter-spacing));
+  border: var(--ui-btn-border, 1px solid transparent);
+  background: var(--ui-btn-bg, transparent);
+  color: var(--ui-btn-color, var(--text-primary));
+  box-shadow: var(--ui-btn-shadow, none);
   transition: transform var(--motion-fast) var(--ease-standard), filter var(--motion-fast) var(--ease-standard),
     background-color var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard),
     color var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard);
 }
 
 .ui-button:hover {
-  filter: brightness(1.03);
+  background: var(--ui-btn-hover-bg, var(--ui-btn-bg, transparent));
+  color: var(--ui-btn-hover-color, var(--ui-btn-color, var(--text-primary)));
+  border: var(--ui-btn-hover-border, var(--ui-btn-border, 1px solid transparent));
+  box-shadow: var(--ui-btn-hover-shadow, var(--ui-btn-shadow, none));
+  transform: var(--ui-btn-hover-transform, none);
 }
 
 .ui-button:active {
-  transform: translateY(1px);
+  background: var(--ui-btn-active-bg, var(--ui-btn-hover-bg, var(--ui-btn-bg, transparent)));
+  color: var(--ui-btn-active-color, var(--ui-btn-hover-color, var(--ui-btn-color, var(--text-primary))));
+  border: var(--ui-btn-active-border, var(--ui-btn-hover-border, var(--ui-btn-border, 1px solid transparent)));
+  box-shadow: var(--ui-btn-active-shadow, var(--ui-btn-hover-shadow, var(--ui-btn-shadow, none)));
+  transform: var(--ui-btn-active-transform, none);
+}
+
+.ui-button:disabled {
+  opacity: 0.54;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .ui-button-primary {
-  background: var(--ui-btn-primary-bg);
-  color: var(--ui-btn-primary-color);
-  border: var(--ui-btn-primary-border);
-  box-shadow: var(--ui-btn-primary-shadow);
+  --ui-btn-bg: var(--ui-btn-primary-bg);
+  --ui-btn-color: var(--ui-btn-primary-color);
+  --ui-btn-border: var(--ui-btn-primary-border);
+  --ui-btn-shadow: var(--ui-btn-primary-shadow);
+  --ui-btn-hover-bg: var(--ui-btn-primary-hover-bg);
+  --ui-btn-hover-color: var(--ui-btn-primary-hover-color);
+  --ui-btn-hover-border: var(--ui-btn-primary-hover-border);
+  --ui-btn-hover-shadow: var(--ui-btn-primary-hover-shadow);
+  --ui-btn-active-bg: var(--ui-btn-primary-active-bg);
+  --ui-btn-active-color: var(--ui-btn-primary-active-color);
+  --ui-btn-active-border: var(--ui-btn-primary-active-border);
+  --ui-btn-active-shadow: var(--ui-btn-primary-active-shadow);
 }
 
 .ui-button-secondary {
-  background: var(--ui-btn-secondary-bg);
-  color: var(--ui-btn-secondary-color);
-  border: var(--ui-btn-secondary-border);
+  --ui-btn-bg: var(--ui-btn-secondary-bg);
+  --ui-btn-color: var(--ui-btn-secondary-color);
+  --ui-btn-border: var(--ui-btn-secondary-border);
+  --ui-btn-shadow: var(--ui-btn-secondary-shadow);
+  --ui-btn-hover-bg: var(--ui-btn-secondary-hover-bg);
+  --ui-btn-hover-color: var(--ui-btn-secondary-hover-color);
+  --ui-btn-hover-border: var(--ui-btn-secondary-hover-border);
+  --ui-btn-hover-shadow: var(--ui-btn-secondary-hover-shadow);
+  --ui-btn-active-bg: var(--ui-btn-secondary-active-bg);
+  --ui-btn-active-color: var(--ui-btn-secondary-active-color);
+  --ui-btn-active-border: var(--ui-btn-secondary-active-border);
+  --ui-btn-active-shadow: var(--ui-btn-secondary-active-shadow);
+}
+
+.ui-button-outlined {
+  --ui-btn-bg: var(--ui-btn-outlined-bg);
+  --ui-btn-color: var(--ui-btn-outlined-color);
+  --ui-btn-border: var(--ui-btn-outlined-border);
+  --ui-btn-shadow: var(--ui-btn-outlined-shadow);
+  --ui-btn-hover-bg: var(--ui-btn-outlined-hover-bg);
+  --ui-btn-hover-color: var(--ui-btn-outlined-hover-color);
+  --ui-btn-hover-border: var(--ui-btn-outlined-hover-border);
+  --ui-btn-hover-shadow: var(--ui-btn-outlined-hover-shadow);
+  --ui-btn-active-bg: var(--ui-btn-outlined-active-bg);
+  --ui-btn-active-color: var(--ui-btn-outlined-active-color);
+  --ui-btn-active-border: var(--ui-btn-outlined-active-border);
+  --ui-btn-active-shadow: var(--ui-btn-outlined-active-shadow);
 }
 
 .ui-button-ghost {
-  background: var(--ui-btn-ghost-bg);
-  color: var(--ui-btn-ghost-color);
-  border: var(--ui-btn-ghost-border);
+  --ui-btn-bg: var(--ui-btn-ghost-bg);
+  --ui-btn-color: var(--ui-btn-ghost-color);
+  --ui-btn-border: var(--ui-btn-ghost-border);
+  --ui-btn-shadow: var(--ui-btn-ghost-shadow);
+  --ui-btn-hover-bg: var(--ui-btn-ghost-hover-bg);
+  --ui-btn-hover-color: var(--ui-btn-ghost-hover-color);
+  --ui-btn-hover-border: var(--ui-btn-ghost-hover-border);
+  --ui-btn-hover-shadow: var(--ui-btn-ghost-hover-shadow);
+  --ui-btn-active-bg: var(--ui-btn-ghost-active-bg);
+  --ui-btn-active-color: var(--ui-btn-ghost-active-color);
+  --ui-btn-active-border: var(--ui-btn-ghost-active-border);
+  --ui-btn-active-shadow: var(--ui-btn-ghost-active-shadow);
 }
 
 .ui-button-danger {
-  background: var(--ui-btn-danger-bg);
-  color: var(--ui-btn-danger-color);
-  border: var(--ui-btn-danger-border);
+  --ui-btn-bg: var(--ui-btn-danger-bg);
+  --ui-btn-color: var(--ui-btn-danger-color);
+  --ui-btn-border: var(--ui-btn-danger-border);
+  --ui-btn-shadow: var(--ui-btn-danger-shadow);
+  --ui-btn-hover-bg: var(--ui-btn-danger-hover-bg);
+  --ui-btn-hover-color: var(--ui-btn-danger-hover-color);
+  --ui-btn-hover-border: var(--ui-btn-danger-hover-border);
+  --ui-btn-hover-shadow: var(--ui-btn-danger-hover-shadow);
+  --ui-btn-active-bg: var(--ui-btn-danger-active-bg);
+  --ui-btn-active-color: var(--ui-btn-danger-active-color);
+  --ui-btn-active-border: var(--ui-btn-danger-active-border);
+  --ui-btn-active-shadow: var(--ui-btn-danger-active-shadow);
 }
 
 .ui-input {
-  border: var(--ui-input-border);
-  background: var(--ui-input-bg);
-  box-shadow: var(--ui-input-shadow);
+  border: var(--ui-input-default-border, 1px solid var(--border-default));
+  background: var(--ui-input-default-bg, var(--surface));
+  box-shadow: var(--ui-input-default-shadow, none);
+  color: var(--ui-input-default-color, var(--text-primary));
+}
+
+.ui-input::placeholder {
+  color: var(--ui-input-default-placeholder, var(--text-tertiary));
+}
+
+.ui-input:hover {
+  border: var(--ui-input-default-hover-border, var(--ui-input-default-border, 1px solid var(--border-default)));
+  background: var(--ui-input-default-hover-bg, var(--ui-input-default-bg, var(--surface)));
+}
+
+.ui-input:focus-visible {
+  border: var(
+    --ui-input-default-focus-border,
+    var(--ui-input-default-hover-border, var(--ui-input-default-border, 1px solid var(--border-default)))
+  );
+  background: var(--ui-input-default-focus-bg, var(--ui-input-default-bg, var(--surface)));
+  box-shadow: var(--ui-input-default-focus-shadow, 0 0 0 3px color-mix(in hsl, var(--focus-ring) 22%, transparent));
+}
+
+.ui-select {
+  border: var(--ui-select-default-border, 1px solid var(--border-default));
+  background: var(--ui-select-default-bg, var(--surface));
+  box-shadow: var(--ui-select-default-shadow, none);
+  color: var(--ui-select-default-color, var(--text-primary));
+}
+
+.ui-select:hover {
+  border: var(--ui-select-default-hover-border, var(--ui-select-default-border, 1px solid var(--border-default)));
+  background: var(--ui-select-default-hover-bg, var(--ui-select-default-bg, var(--surface)));
+}
+
+.ui-select:focus-visible {
+  border: var(
+    --ui-select-default-focus-border,
+    var(--ui-select-default-hover-border, var(--ui-select-default-border, 1px solid var(--border-default)))
+  );
+  background: var(--ui-select-default-focus-bg, var(--ui-select-default-bg, var(--surface)));
+  box-shadow: var(--ui-select-default-focus-shadow, 0 0 0 3px color-mix(in hsl, var(--focus-ring) 22%, transparent));
+}
+
+.ui-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--ui-slider-track-bg);
+  outline: none;
+}
+
+.ui-slider:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in hsl, var(--focus-ring) 22%, transparent);
+}
+
+.ui-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: transparent;
+}
+
+.ui-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ui-slider-thumb-bg);
+  border: var(--ui-slider-thumb-border);
+  box-shadow: var(--ui-slider-thumb-shadow);
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.ui-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.04);
+}
+
+.ui-slider::-moz-range-track {
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--ui-slider-track-bg);
+}
+
+.ui-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ui-slider-thumb-bg);
+  border: var(--ui-slider-thumb-border);
+  box-shadow: var(--ui-slider-thumb-shadow);
 }
 
 .ui-badge {
@@ -128,54 +292,57 @@ body {
   height: var(--ui-badge-height);
   padding: 0 var(--space-sm);
   border-radius: var(--ui-badge-radius);
-  border: 1px solid transparent;
+  border: 1px solid var(--ui-badge-border, transparent);
   font-size: 0.75rem;
   font-weight: var(--ui-badge-font-weight);
   letter-spacing: -0.01em;
   line-height: 1;
   transition: background-color var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard),
     color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
-  backdrop-filter: blur(calc(var(--glass-blur) * 0.52)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.52)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(calc(var(--ui-surface-panel-backdrop-blur, 0px) * 0.5))
+    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
+  -webkit-backdrop-filter: blur(calc(var(--ui-surface-panel-backdrop-blur, 0px) * 0.5))
+    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
 }
 
 .ui-badge-neutral {
   background: var(--ui-badge-neutral-bg);
   color: var(--ui-badge-neutral-color);
-  border-color: var(--ui-badge-neutral-border);
+  --ui-badge-border: var(--ui-badge-neutral-border);
 }
 
 .ui-badge-accent {
   background: var(--ui-badge-accent-bg);
   color: var(--ui-badge-accent-color);
-  border-color: var(--ui-badge-accent-border);
+  --ui-badge-border: var(--ui-badge-accent-border);
 }
 
 .ui-badge-success {
   background: var(--ui-badge-success-bg);
   color: var(--ui-badge-success-color);
-  border-color: var(--ui-badge-success-border);
+  --ui-badge-border: var(--ui-badge-success-border);
 }
 
 .ui-badge-warning {
   background: var(--ui-badge-warning-bg);
   color: var(--ui-badge-warning-color);
-  border-color: var(--ui-badge-warning-border);
+  --ui-badge-border: var(--ui-badge-warning-border);
 }
 
 .ui-badge-danger {
   background: var(--ui-badge-danger-bg);
   color: var(--ui-badge-danger-color);
-  border-color: var(--ui-badge-danger-border);
+  --ui-badge-border: var(--ui-badge-danger-border);
 }
 
 .ui-table-shell {
   overflow: hidden;
-  border-radius: var(--card-radius);
-  border: 1px solid var(--ui-table-shell-border);
+  border-radius: var(--ui-table-shell-radius, var(--card-radius));
+  border: 1px solid var(--ui-table-shell-border, var(--border-default));
   background: var(--ui-table-shell-bg);
-  backdrop-filter: blur(calc(var(--glass-blur) * 0.62)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.62)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--ui-table-shell-backdrop-blur, 0px)) saturate(var(--ui-table-shell-backdrop-saturate, 100%));
+  -webkit-backdrop-filter: blur(var(--ui-table-shell-backdrop-blur, 0px))
+    saturate(var(--ui-table-shell-backdrop-saturate, 100%));
 }
 
 .ui-table {
@@ -208,7 +375,7 @@ body {
 }
 
 .ui-table-cell {
-  height: var(--table-row-height);
+  height: var(--ui-table-row-height, var(--table-row-height));
   color: var(--ui-table-cell-color);
 }
 
@@ -220,9 +387,10 @@ body {
   background: var(--ui-modal-bg);
   border: 1px solid var(--ui-modal-border);
   box-shadow: var(--ui-modal-shadow);
-  border-radius: var(--modal-radius);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-radius: var(--ui-modal-radius, var(--modal-radius));
+  backdrop-filter: blur(var(--ui-surface-panel-backdrop-blur, 0px)) saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
+  -webkit-backdrop-filter: blur(var(--ui-surface-panel-backdrop-blur, 0px))
+    saturate(var(--ui-surface-panel-backdrop-saturate, 100%));
 }
 
 .ui-modal-close {
@@ -245,39 +413,66 @@ body {
 
 .token-tab {
   border-radius: var(--tabs-radius);
-  border: 1px solid var(--ui-tab-idle-border);
+  border: 1px solid var(--ui-tab-border, var(--ui-tab-idle-border));
+  background: var(--ui-tab-bg, var(--ui-tab-idle-bg));
+  color: var(--ui-tab-color, var(--ui-tab-idle-color));
+  box-shadow: var(--ui-tab-shadow, none);
   transition-duration: var(--motion-base);
   transition-timing-function: var(--ease-standard);
+  transition-property: background-color, border-color, color, box-shadow;
 }
 
 .token-tab-idle {
-  background: var(--ui-tab-idle-bg);
-  color: var(--ui-tab-idle-color);
-}
-
-.token-tab-idle:hover {
-  color: var(--text-primary);
-  border-color: var(--border-strong);
+  --ui-tab-bg: var(--ui-tab-idle-bg);
+  --ui-tab-color: var(--ui-tab-idle-color);
+  --ui-tab-border: var(--ui-tab-idle-border);
+  --ui-tab-shadow: var(--ui-tab-idle-shadow);
+  --ui-tab-hover-bg: var(--ui-tab-idle-hover-bg);
+  --ui-tab-hover-color: var(--ui-tab-idle-hover-color);
+  --ui-tab-hover-border: var(--ui-tab-idle-hover-border);
 }
 
 .token-tab-active {
-  background: var(--ui-tab-active-bg);
-  color: var(--ui-tab-active-color);
-  border-color: var(--ui-tab-active-border);
-  box-shadow: var(--ui-tab-active-shadow);
+  --ui-tab-bg: var(--ui-tab-active-bg);
+  --ui-tab-color: var(--ui-tab-active-color);
+  --ui-tab-border: var(--ui-tab-active-border);
+  --ui-tab-shadow: var(--ui-tab-active-shadow);
+  --ui-tab-hover-bg: var(--ui-tab-active-hover-bg);
+  --ui-tab-hover-color: var(--ui-tab-active-hover-color);
+  --ui-tab-hover-border: var(--ui-tab-active-hover-border);
+}
+
+.token-tab:hover {
+  background: var(--ui-tab-hover-bg, var(--ui-tab-bg, var(--ui-tab-idle-bg)));
+  color: var(--ui-tab-hover-color, var(--ui-tab-color, var(--ui-tab-idle-color)));
+  border-color: var(--ui-tab-hover-border, var(--ui-tab-border, var(--ui-tab-idle-border)));
 }
 
 .theme-switcher {
   display: inline-flex;
   align-items: center;
-  border-radius: calc(var(--tabs-radius) + 2px);
-  border: 1px solid var(--border-subtle);
-  background: color-mix(in hsl, var(--surface-muted) 88%, white 12%);
-  padding: 3px;
+  border-radius: var(--ui-tabs-shell-radius, calc(var(--tabs-radius) + 2px));
+  border: 1px solid var(--ui-tabs-shell-border, var(--border-subtle));
+  background: var(--ui-tabs-shell-bg, color-mix(in hsl, var(--surface-muted) 88%, white 12%));
+  padding: var(--ui-tabs-shell-padding, 3px);
+}
+
+.ui-card {
+  background: var(--ui-card-bg, var(--ui-surface-panel-bg, var(--surface)));
+  border: var(--ui-card-border, 1px solid var(--ui-surface-panel-border, var(--border-default)));
+  border-radius: var(--ui-card-radius, var(--card-radius));
+  box-shadow: var(--ui-card-shadow, var(--ui-surface-panel-shadow, none));
+  padding: var(--ui-card-padding, var(--card-padding));
+  backdrop-filter: blur(var(--ui-card-backdrop-blur, 0px)) saturate(var(--ui-card-backdrop-saturate, 100%));
+  -webkit-backdrop-filter: blur(var(--ui-card-backdrop-blur, 0px))
+    saturate(var(--ui-card-backdrop-saturate, 100%));
 }
 
 .focus-ring {
   outline: none;
+}
+
+.focus-ring:focus-visible {
   box-shadow: 0 0 0 3px color-mix(in hsl, var(--focus-ring) 22%, transparent);
 }
 

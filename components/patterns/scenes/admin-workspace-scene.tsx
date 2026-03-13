@@ -6,6 +6,8 @@ import { adminContent } from "@/lib/content/admin";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Select } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 import { DataTable } from "@/components/ui/table";
 import { Tabs } from "@/components/ui/tabs";
 
@@ -32,6 +34,8 @@ export const AdminWorkspaceScene = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [activeAction, setActiveAction] = useState<string | null>(null);
   const [chartRange, setChartRange] = useState<"week" | "month">("week");
+  const [selectedMetric, setSelectedMetric] = useState("throughput");
+  const [sensitivity, setSensitivity] = useState(58);
   const [selectedQueueTitle, setSelectedQueueTitle] = useState<string>(content.queue[0]?.title ?? "");
   const [actionNote, setActionNote] = useState(locale === "zh" ? "点击顶部操作，查看状态反馈。" : "Click a top action to inspect state feedback.");
 
@@ -40,6 +44,8 @@ export const AdminWorkspaceScene = () => {
     setActiveTab(tabs[0]);
     setActiveAction(null);
     setChartRange("week");
+    setSelectedMetric("throughput");
+    setSensitivity(58);
     setSelectedQueueTitle(content.queue[0]?.title ?? "");
     setActionNote(locale === "zh" ? "点击顶部操作，查看状态反馈。" : "Click a top action to inspect state feedback.");
   }, [content.queue, locale, navItems, tabs]);
@@ -88,7 +94,35 @@ export const AdminWorkspaceScene = () => {
 
   const selectedQueue = filteredQueue.find((item) => item.title === selectedQueueTitle) ?? filteredQueue[0] ?? null;
 
-  const chartValues = chartRange === "week" ? [52, 62, 44, 73, 66, 80, 58] : [41, 47, 55, 63, 69, 72, 77];
+  const metricOptions = useMemo(
+    () =>
+      locale === "zh"
+        ? [
+            { value: "throughput", label: "处理量" },
+            { value: "risk", label: "风险趋势" },
+            { value: "automation", label: "自动化执行" }
+          ]
+        : [
+            { value: "throughput", label: "Throughput" },
+            { value: "risk", label: "Risk Trend" },
+            { value: "automation", label: "Automation Runs" }
+          ],
+    [locale]
+  );
+
+  const chartValues = useMemo(() => {
+    const baseSeries: Record<string, number[]> = {
+      throughput: [52, 62, 44, 73, 66, 80, 58],
+      risk: [46, 54, 58, 63, 55, 51, 49],
+      automation: [38, 44, 52, 63, 71, 76, 82]
+    };
+
+    const base = baseSeries[selectedMetric] ?? baseSeries.throughput;
+    const rangeShift = chartRange === "month" ? 5 : 0;
+    const sensitivityShift = Math.round((sensitivity - 50) / 6);
+
+    return base.map((value) => Math.max(16, Math.min(92, value + rangeShift + sensitivityShift)));
+  }, [chartRange, selectedMetric, sensitivity]);
 
   const handleAction = (action: string) => {
     setActiveAction(action);
@@ -184,17 +218,34 @@ export const AdminWorkspaceScene = () => {
           title={locale === "zh" ? "运营信号" : "Operations Signal"}
           description={
             locale === "zh"
-              ? "切换周期观察趋势变化，保持同一图形结构。"
-              : "Switch range to inspect trend changes while keeping identical chart structure."
+              ? "通过下拉和滑块快速调整可视化参数，观察同一结构下的反馈。"
+              : "Adjust parameters with dropdown and slider while preserving the same chart structure."
           }
         >
-          <div className="mb-3 flex gap-2">
-            <Button size="sm" variant={chartRange === "week" ? "secondary" : "ghost"} onClick={() => setChartRange("week")}>
-              {locale === "zh" ? "7 天" : "7d"}
-            </Button>
-            <Button size="sm" variant={chartRange === "month" ? "secondary" : "ghost"} onClick={() => setChartRange("month")}>
-              {locale === "zh" ? "30 天" : "30d"}
-            </Button>
+          <div className="mb-4 grid gap-3 md:grid-cols-[1fr_1.2fr_auto] md:items-end">
+            <Select
+              label={locale === "zh" ? "指标维度" : "Metric"}
+              options={metricOptions}
+              value={selectedMetric}
+              onChange={(event) => setSelectedMetric(event.target.value)}
+            />
+            <Slider
+              label={locale === "zh" ? "灵敏度" : "Sensitivity"}
+              min={20}
+              max={90}
+              step={1}
+              value={sensitivity}
+              onChange={(event) => setSensitivity(Number(event.target.value))}
+              valueText={locale === "zh" ? `${sensitivity} / 90` : `${sensitivity} / 90`}
+            />
+            <div className="flex gap-2">
+              <Button size="sm" variant={chartRange === "week" ? "secondary" : "ghost"} onClick={() => setChartRange("week")}>
+                {locale === "zh" ? "7 天" : "7d"}
+              </Button>
+              <Button size="sm" variant={chartRange === "month" ? "secondary" : "ghost"} onClick={() => setChartRange("month")}>
+                {locale === "zh" ? "30 天" : "30d"}
+              </Button>
+            </div>
           </div>
           <div className="h-56 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[linear-gradient(180deg,color-mix(in_hsl,var(--accent)_10%,white),transparent)] p-4">
             <div className="grid h-full grid-cols-7 items-end gap-2">

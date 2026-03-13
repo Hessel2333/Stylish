@@ -5,7 +5,7 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
     color: {
       bgBase: "#f2f3f7",
       bgAmbient:
-        "radial-gradient(1120px 640px at 14% 0%, rgba(132, 188, 255, 0.2), transparent 56%), radial-gradient(980px 580px at 88% 8%, rgba(255, 255, 255, 0.82), transparent 62%), linear-gradient(176deg, #f6f8fc 0%, #eef2f8 100%)",
+        "radial-gradient(900px 500px at 12% -6%, rgba(142, 186, 255, 0.15), transparent 62%), radial-gradient(760px 460px at 88% 0%, rgba(255, 255, 255, 0.68), transparent 68%), linear-gradient(180deg, #f6f8fc 0%, #eff3f8 100%)",
       surfaceBase: "rgba(255, 255, 255, 0.72)",
       surfaceElevated: "rgba(255, 255, 255, 0.9)",
       textStrong: "#111318",
@@ -146,7 +146,7 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
     color: {
       bgBase: "#edf1f8",
       bgAmbient:
-        "radial-gradient(940px 620px at 82% 6%, rgba(214, 185, 248, 0.42), transparent 58%), radial-gradient(1080px 700px at 12% 12%, rgba(198, 220, 255, 0.36), transparent 64%), linear-gradient(168deg, #f2f5fb 0%, #e9eff8 58%, #ece7f5 100%)",
+        "radial-gradient(900px 520px at 96% -8%, rgba(196, 212, 236, 0.18), transparent 70%), linear-gradient(180deg, #edf1f8 0%, #eaf0f8 100%)",
       surfaceBase: "rgba(255, 255, 255, 0.82)",
       surfaceElevated: "rgba(255, 255, 255, 0.94)",
       textStrong: "#242731",

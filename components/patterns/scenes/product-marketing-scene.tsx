@@ -6,6 +6,7 @@ import { productContent } from "@/lib/content/product";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Modal } from "@/components/ui/modal";
 
 export const ProductMarketingScene = () => {
   const { locale } = useLocale();
@@ -40,7 +41,12 @@ export const ProductMarketingScene = () => {
           chosenPlan: "已选中",
           actionIdle: "请选择一个 CTA 操作，查看反馈内容。",
           actionBooked: "演示请求已加入待办队列，销售顾问会在 24 小时内联系。",
-          actionBrief: "平台说明已展开为阅读模式，你可以继续查看治理和权限章节。"
+          actionBrief: "平台说明已展开为阅读模式，你可以继续查看治理和权限章节。",
+          demoModalTitle: "产品演示概览",
+          demoModalDesc: "演示流程与模块顺序在三种主题中保持一致，仅表现语言不同。",
+          demoSteps: ["场景目标校准", "关键角色映射", "跨团队协同链路"],
+          close: "关闭",
+          continue: "继续体验"
         }
       : {
           trial: "Start 14-day trial",
@@ -69,7 +75,12 @@ export const ProductMarketingScene = () => {
           chosenPlan: "Selected",
           actionIdle: "Choose one CTA action to reveal response content.",
           actionBooked: "Demo request queued. A solution consultant will follow up in 24 hours.",
-          actionBrief: "Platform brief is now expanded in reading mode with governance sections."
+          actionBrief: "Platform brief is now expanded in reading mode with governance sections.",
+          demoModalTitle: "Demo Overview",
+          demoModalDesc: "Flow and module order remain identical across themes; only visual language changes.",
+          demoSteps: ["Scenario Goal Alignment", "Role Mapping", "Cross-team Collaboration Chain"],
+          close: "Close",
+          continue: "Continue"
         };
 
   const [heroMode, setHeroMode] = useState<"trial" | "demo">("trial");
@@ -77,6 +88,7 @@ export const ProductMarketingScene = () => {
   const [activePlan, setActivePlan] = useState<string>(content.pricing[1]?.tier ?? content.pricing[0].tier);
   const [activeFeature, setActiveFeature] = useState<string>(content.features[0]?.title ?? "");
   const [ctaState, setCtaState] = useState<"idle" | "booked" | "brief">("idle");
+  const [demoOpen, setDemoOpen] = useState(false);
 
   useEffect(() => {
     setHeroMode("trial");
@@ -84,6 +96,7 @@ export const ProductMarketingScene = () => {
     setActivePlan(content.pricing[1]?.tier ?? content.pricing[0].tier);
     setActiveFeature(content.features[0]?.title ?? "");
     setCtaState("idle");
+    setDemoOpen(false);
   }, [locale, content.features, content.pricing]);
 
   const heroSignal =
@@ -151,7 +164,14 @@ export const ProductMarketingScene = () => {
           <Button size="lg" variant={heroMode === "trial" ? "primary" : "secondary"} onClick={() => setHeroMode("trial")}>
             {copy.trial}
           </Button>
-          <Button size="lg" variant={heroMode === "demo" ? "primary" : "ghost"} onClick={() => setHeroMode("demo")}>
+          <Button
+            size="lg"
+            variant={heroMode === "demo" ? "primary" : "ghost"}
+            onClick={() => {
+              setHeroMode("demo");
+              setDemoOpen(true);
+            }}
+          >
             {copy.demo}
           </Button>
         </div>
@@ -302,6 +322,30 @@ export const ProductMarketingScene = () => {
           </div>
         </Card>
       </section>
+
+      <Modal
+        open={demoOpen}
+        onClose={() => setDemoOpen(false)}
+        title={copy.demoModalTitle}
+        description={copy.demoModalDesc}
+        closeLabel={copy.close}
+        backdropLabel={copy.close}
+      >
+        <div className="grid gap-3">
+          {copy.demoSteps.map((step, index) => (
+            <div key={step} className="interactive-panel subtle-panel flex items-center gap-3 p-3">
+              <Badge tone="accent">{index + 1}</Badge>
+              <p className="text-sm text-token-secondary">{step}</p>
+            </div>
+          ))}
+          <div className="mt-1 flex justify-end gap-2">
+            <Button variant="ghost" onClick={() => setDemoOpen(false)}>
+              {copy.close}
+            </Button>
+            <Button onClick={() => setDemoOpen(false)}>{copy.continue}</Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

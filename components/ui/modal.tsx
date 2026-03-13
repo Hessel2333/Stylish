@@ -37,7 +37,7 @@ export const Modal = ({
         className={cn(
           "ui-modal-panel relative z-10 w-full p-[var(--space-lg)]"
         )}
-        style={{ maxWidth: "var(--modal-max-width)" }}
+        style={{ maxWidth: "var(--ui-modal-max-width,var(--modal-max-width))" }}
       >
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>

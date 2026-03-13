@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Modal } from "@/components/ui/modal";
+import { Select } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 import { Tabs } from "@/components/ui/tabs";
 
 type SceneTask = {
@@ -41,6 +43,8 @@ export const TaskAppScene = () => {
   const [feedback, setFeedback] = useState(locale === "zh" ? "请选择任务查看详情。" : "Select a task to inspect details.");
   const [formState, setFormState] = useState({ title: "", owner: "", due: "", status: readyStatus });
   const [preferences, setPreferences] = useState({ defaultOwner: true, reminder: true, escalation: true });
+  const [focusMode, setFocusMode] = useState("balanced");
+  const [reminderIntensity, setReminderIntensity] = useState(62);
 
   useEffect(() => {
     const seededTasks = content.tasks.map((task, index) => ({ ...task, id: `${index}-${task.title}` }));
@@ -50,7 +54,30 @@ export const TaskAppScene = () => {
     setFeedback(locale === "zh" ? "请选择任务查看详情。" : "Select a task to inspect details.");
     setFormState({ title: "", owner: "", due: "", status: readyStatus });
     setPreferences({ defaultOwner: true, reminder: true, escalation: true });
+    setFocusMode("balanced");
+    setReminderIntensity(62);
   }, [content.tasks, locale, readyStatus, tabItems]);
+
+  const statusSelectOptions = useMemo(
+    () => statusOptions.map((status) => ({ value: status, label: status })),
+    [statusOptions]
+  );
+
+  const focusModeOptions = useMemo(
+    () =>
+      locale === "zh"
+        ? [
+            { value: "balanced", label: "平衡模式" },
+            { value: "delivery", label: "交付优先" },
+            { value: "quality", label: "质量优先" }
+          ]
+        : [
+            { value: "balanced", label: "Balanced Mode" },
+            { value: "delivery", label: "Delivery First" },
+            { value: "quality", label: "Quality First" }
+          ],
+    [locale]
+  );
 
   const badgeToneMap: Record<string, "neutral" | "warning" | "success" | "danger" | "accent"> =
     locale === "zh"
@@ -270,6 +297,22 @@ export const TaskAppScene = () => {
               locale === "zh" ? "点击切换开关并保存，查看反馈状态。" : "Toggle switches and save to inspect feedback states."
             }
           >
+            <div className="mb-3 grid gap-3">
+              <Select
+                label={locale === "zh" ? "任务聚焦模式" : "Task Focus Mode"}
+                options={focusModeOptions}
+                value={focusMode}
+                onChange={(event) => setFocusMode(event.target.value)}
+              />
+              <Slider
+                label={locale === "zh" ? "提醒强度" : "Reminder Intensity"}
+                min={20}
+                max={100}
+                value={reminderIntensity}
+                onChange={(event) => setReminderIntensity(Number(event.target.value))}
+                valueText={locale === "zh" ? `${reminderIntensity}%` : `${reminderIntensity}%`}
+              />
+            </div>
             <ul className="grid gap-2 text-sm text-token-secondary">
               {preferenceItems.map((item) => {
                 const enabled = preferences[item.key as keyof typeof preferences];
@@ -355,21 +398,12 @@ export const TaskAppScene = () => {
             value={formState.due}
             onChange={(event) => setFormState((prev) => ({ ...prev, due: event.target.value }))}
           />
-          <div className="grid gap-2">
-            <p className="text-sm text-token-secondary">{locale === "zh" ? "初始状态" : "Initial Status"}</p>
-            <div className="flex flex-wrap gap-2">
-              {statusOptions.map((status) => (
-                <Button
-                  key={status}
-                  size="sm"
-                  variant={formState.status === status ? "secondary" : "ghost"}
-                  onClick={() => setFormState((prev) => ({ ...prev, status }))}
-                >
-                  {status}
-                </Button>
-              ))}
-            </div>
-          </div>
+          <Select
+            label={locale === "zh" ? "初始状态" : "Initial Status"}
+            options={statusSelectOptions}
+            value={formState.status}
+            onChange={(event) => setFormState((prev) => ({ ...prev, status: event.target.value }))}
+          />
           <div className="mt-2 flex justify-end gap-2">
             <Button variant="ghost" onClick={() => setOpen(false)}>
               {locale === "zh" ? "取消" : "Cancel"}

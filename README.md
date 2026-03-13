@@ -78,9 +78,22 @@ reference/           # 设计参考与风格参考
 4. Component Tokens
 - Button/Input/Card/Table/Tabs/Modal 的视觉与交互参数
 
-5. Density / Layout Profile
+5. Component Recipes
+- 以语义变体为入口（如 `button.primary`、`tabs.active`）
+- 由主题定义最终视觉决策（边框、背景、阴影、hover/active 行为）
+- 基础组件只保留结构与语义，不做主题结论
+
+6. Density / Layout Profile
 - section 间距、内容宽度、网格间距
 - 工具栏高度、面板内边距、表格密度
+
+## 主题职责边界
+- TypeScript（`lib/theme/*`）：
+  - 维护主题 definition、tokens、recipes（单一视觉真相来源）
+- CSS（`app/globals.css`）：
+  - 维护结构类与交互骨架，只消费 CSS 变量
+- `styles/tokens.css`：
+  - 仅保留极简全局基础，不再承载主题视觉覆写
 
 ## 多语言说明
 - 支持中文与英文完整切换

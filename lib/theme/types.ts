@@ -125,6 +125,159 @@ export type ComponentTokens = {
   };
 };
 
+type ButtonStateRecipe = {
+  bg: string;
+  color: string;
+  border: string;
+  shadow: string;
+  hoverBg: string;
+  hoverColor: string;
+  hoverBorder: string;
+  hoverShadow: string;
+  activeBg: string;
+  activeColor: string;
+  activeBorder: string;
+  activeShadow: string;
+};
+
+type FieldStateRecipe = {
+  bg: string;
+  border: string;
+  shadow: string;
+  color: string;
+  placeholder: string;
+  hoverBg: string;
+  hoverBorder: string;
+  focusBg: string;
+  focusBorder: string;
+  focusShadow: string;
+};
+
+type SurfaceRecipe = {
+  bg: string;
+  border: string;
+  shadow: string;
+  backdropBlur: string;
+  backdropSaturate: string;
+};
+
+type TabStateRecipe = {
+  bg: string;
+  color: string;
+  border: string;
+  shadow: string;
+  hoverBg: string;
+  hoverColor: string;
+  hoverBorder: string;
+};
+
+type BadgeToneRecipe = {
+  bg: string;
+  color: string;
+  border: string;
+};
+
+export type ComponentRecipes = {
+  surface: {
+    panel: SurfaceRecipe;
+    subtle: SurfaceRecipe;
+  };
+  button: {
+    radius: string;
+    letterSpacing: string;
+    hoverTransform: string;
+    activeTransform: string;
+    primary: ButtonStateRecipe;
+    secondary: ButtonStateRecipe;
+    outlined: ButtonStateRecipe;
+    ghost: ButtonStateRecipe;
+    danger: ButtonStateRecipe;
+  };
+  input: {
+    radius: string;
+    default: FieldStateRecipe;
+  };
+  select: {
+    radius: string;
+    indicator: string;
+    default: FieldStateRecipe;
+  };
+  card: {
+    default: {
+      bg: string;
+      border: string;
+      shadow: string;
+      radius: string;
+      padding: string;
+      backdropBlur: string;
+      backdropSaturate: string;
+    };
+  };
+  tabs: {
+    shell: {
+      bg: string;
+      border: string;
+      radius: string;
+      padding: string;
+    };
+    idle: TabStateRecipe;
+    active: TabStateRecipe;
+  };
+  badge: {
+    height: string;
+    radius: string;
+    fontWeight: string;
+    neutral: BadgeToneRecipe;
+    accent: BadgeToneRecipe;
+    success: BadgeToneRecipe;
+    warning: BadgeToneRecipe;
+    danger: BadgeToneRecipe;
+  };
+  table: {
+    shell: {
+      bg: string;
+      border: string;
+      radius: string;
+      backdropBlur: string;
+      backdropSaturate: string;
+    };
+    header: {
+      bg: string;
+      color: string;
+      border: string;
+      fontWeight: string;
+    };
+    row: {
+      border: string;
+      oddBg: string;
+      hoverBg: string;
+      color: string;
+      secondaryColor: string;
+      height: string;
+    };
+  };
+  slider: {
+    trackBg: string;
+    trackFill: string;
+    thumbBg: string;
+    thumbBorder: string;
+    thumbShadow: string;
+  };
+  modal: {
+    radius: string;
+    maxWidth: string;
+    backdropBg: string;
+    bg: string;
+    border: string;
+    shadow: string;
+    closeBg: string;
+    closeBorder: string;
+    closeColor: string;
+    closeHoverBg: string;
+    closeHoverBorder: string;
+  };
+};
+
 export type DensityProfile = {
   density: "airy" | "balanced" | "compact";
   contentMaxWidth: string;
@@ -147,5 +300,6 @@ export type ThemeDefinition = {
   primitives: PrimitiveTokens;
   semantics: SemanticTokens;
   components: ComponentTokens;
+  recipes: ComponentRecipes;
   density: DensityProfile;
 };
