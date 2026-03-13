@@ -15,16 +15,13 @@ type DataTableProps<T extends Record<string, string>> = {
 
 export const DataTable = <T extends Record<string, string>>({ columns, rows, caption, className }: DataTableProps<T>) => {
   return (
-    <div className={cn("overflow-hidden rounded-[var(--card-radius)] border border-[var(--border-default)] bg-[var(--surface)]", className)}>
-      <table className="w-full border-collapse text-left text-sm">
+    <div className={cn("ui-table-shell", className)}>
+      <table className="ui-table text-left text-sm">
         {caption ? <caption className="sr-only">{caption}</caption> : null}
         <thead>
-          <tr className="bg-[var(--surface-muted)] text-token-secondary">
+          <tr className="ui-table-head-row">
             {columns.map((column) => (
-              <th
-                key={String(column.key)}
-                className={cn("px-4 py-3 font-[var(--table-header-weight)]", column.className)}
-              >
+              <th key={String(column.key)} className={cn("ui-table-head-cell px-4 py-3", column.className)}>
                 {column.label}
               </th>
             ))}
@@ -32,15 +29,9 @@ export const DataTable = <T extends Record<string, string>>({ columns, rows, cap
         </thead>
         <tbody>
           {rows.map((row, index) => (
-            <tr
-              key={`${index}-${row[columns[0].key]}`}
-              className="border-t border-[var(--border-subtle)]"
-              style={{
-                background: index % 2 === 0 ? "transparent" : `color-mix(in hsl, var(--surface-muted) calc(var(--table-stripe-opacity) * 100%), white)`
-              }}
-            >
+            <tr key={`${index}-${row[columns[0].key]}`} className="ui-table-row">
               {columns.map((column) => (
-                <td key={String(column.key)} className={cn("px-4", column.className)} style={{ height: "var(--table-row-height)" }}>
+                <td key={String(column.key)} className={cn("ui-table-cell px-4", column.className)}>
                   {row[column.key]}
                 </td>
               ))}

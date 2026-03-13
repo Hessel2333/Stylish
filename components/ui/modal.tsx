@@ -31,12 +31,11 @@ export const Modal = ({
         type="button"
         aria-label={backdropLabel}
         onClick={onClose}
-        className="absolute inset-0 bg-[var(--overlay)]"
+        className="ui-modal-backdrop absolute inset-0"
       />
       <div
         className={cn(
-          "surface-panel relative z-10 w-full border border-[var(--border-default)] p-[var(--space-lg)]",
-          "rounded-[var(--modal-radius)]"
+          "ui-modal-panel relative z-10 w-full p-[var(--space-lg)]"
         )}
         style={{ maxWidth: "var(--modal-max-width)" }}
       >
@@ -49,7 +48,7 @@ export const Modal = ({
             type="button"
             onClick={onClose}
             aria-label={closeLabel}
-            className="focus-ring inline-flex h-[var(--control-sm)] w-[var(--control-sm)] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-default)] bg-[var(--surface-muted)] text-token-secondary"
+            className="ui-modal-close focus-ring inline-flex h-[var(--control-sm)] w-[var(--control-sm)] items-center justify-center rounded-[var(--radius-sm)]"
           >
             ×
           </button>

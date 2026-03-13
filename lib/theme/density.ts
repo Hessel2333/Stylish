@@ -6,7 +6,7 @@ export const densityProfileByTheme: Record<ThemeName, DensityProfile> = {
     contentMaxWidth: "1180px",
     sectionGap: "var(--space-xxl)",
     gridGap: "var(--space-xl)",
-    toolbarHeight: "58px",
+    toolbarHeight: "56px",
     panelPadding: "var(--space-xl)",
     tableDensity: "comfortable"
   },
@@ -20,12 +20,12 @@ export const densityProfileByTheme: Record<ThemeName, DensityProfile> = {
     tableDensity: "balanced"
   },
   "fluent-2": {
-    density: "compact",
+    density: "balanced",
     contentMaxWidth: "1280px",
-    sectionGap: "calc(var(--space-xxl) - 18px)",
-    gridGap: "var(--space-md)",
-    toolbarHeight: "48px",
-    panelPadding: "var(--space-md)",
-    tableDensity: "compact"
+    sectionGap: "calc(var(--space-xxl) - 8px)",
+    gridGap: "var(--space-lg)",
+    toolbarHeight: "54px",
+    panelPadding: "var(--space-lg)",
+    tableDensity: "balanced"
   }
 };

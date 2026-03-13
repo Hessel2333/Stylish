@@ -12,7 +12,7 @@ const fromPrimitive = (theme: ThemeName): SemanticTokens => {
     textPrimary: p.color.textStrong,
     textSecondary: p.color.textMuted,
     textTertiary:
-      theme === "fluent-2" ? "#6f7884" : theme === "material-3" ? "#756f7e" : "rgba(18, 20, 23, 0.5)",
+      theme === "fluent-2" ? "#747b8f" : theme === "material-3" ? "#756f7e" : "rgba(17, 19, 24, 0.44)",
     accent: p.color.accent,
     accentSoft: p.color.accentSoft,
     borderSubtle: p.color.borderSubtle,
@@ -22,7 +22,7 @@ const fromPrimitive = (theme: ThemeName): SemanticTokens => {
     success: p.color.success,
     warning: p.color.warning,
     danger: p.color.danger,
-    overlay: theme === "apple-hig" ? "rgba(10, 12, 18, 0.34)" : theme === "material-3" ? "rgba(39, 33, 54, 0.4)" : "rgba(15, 23, 42, 0.42)"
+    overlay: theme === "apple-hig" ? "rgba(7, 12, 23, 0.28)" : theme === "material-3" ? "rgba(39, 33, 54, 0.4)" : "rgba(34, 42, 63, 0.34)"
   };
 };
 

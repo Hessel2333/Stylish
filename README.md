@@ -24,12 +24,6 @@
 - Fluent 2
   - 结构化、生产力导向，边界更清晰、密度更高
 
-## 材质模式
-- Standard（标准）
-  - 保持三种设计体系的默认材质表达
-- Liquid Glass
-  - 在不改变场景结构与主题体系的前提下，增强玻璃感与半透明层次
-
 ## 技术栈
 - Next.js（App Router）
 - TypeScript

@@ -8,14 +8,14 @@ const createComponentTokens = (theme: ThemeName): ComponentTokens => {
     return {
       button: {
         radius: p.radius.full,
-        letterSpacing: "-0.01em",
-        primaryShadow: "0 12px 24px rgba(32, 119, 255, 0.22)",
-        ghostBorder: "1px solid rgba(15, 23, 42, 0.09)"
+        letterSpacing: "-0.005em",
+        primaryShadow: "0 8px 20px rgba(0, 113, 227, 0.22)",
+        ghostBorder: "1px solid rgba(17, 25, 40, 0.1)"
       },
       input: {
         radius: p.radius.md,
         borderWidth: "1px",
-        background: "rgba(255,255,255,0.78)"
+        background: "rgba(255,255,255,0.7)"
       },
       card: {
         radius: p.radius.lg,
@@ -24,17 +24,17 @@ const createComponentTokens = (theme: ThemeName): ComponentTokens => {
         shadow: p.shadow.sm
       },
       table: {
-        rowHeight: "52px",
+        rowHeight: "50px",
         headerWeight: "600",
-        stripeOpacity: "0.5"
+        stripeOpacity: "0.34"
       },
       tabs: {
         radius: p.radius.full,
-        activeShadow: p.shadow.xs
+        activeShadow: "0 3px 10px rgba(17, 25, 40, 0.08)"
       },
       modal: {
         radius: p.radius.xl,
-        maxWidth: "640px"
+        maxWidth: "660px"
       }
     };
   }
@@ -77,33 +77,33 @@ const createComponentTokens = (theme: ThemeName): ComponentTokens => {
   return {
     button: {
       radius: p.radius.sm,
-      letterSpacing: "0.005em",
-      primaryShadow: "0 4px 14px rgba(17, 94, 163, 0.24)",
-      ghostBorder: "1px solid #d2d7dc"
+      letterSpacing: "0em",
+      primaryShadow: "0 7px 18px rgba(110, 115, 246, 0.26)",
+      ghostBorder: "1px solid #d3d9e7"
     },
     input: {
       radius: p.radius.sm,
       borderWidth: "1px",
-      background: "#ffffff"
+      background: "rgba(255,255,255,0.9)"
     },
     card: {
-      radius: p.radius.md,
+      radius: p.radius.lg,
       borderWidth: "1px",
       padding: "var(--space-lg)",
-      shadow: p.shadow.xs
+      shadow: p.shadow.sm
     },
     table: {
-      rowHeight: "44px",
-      headerWeight: "650",
-      stripeOpacity: "0.74"
+      rowHeight: "46px",
+      headerWeight: "600",
+      stripeOpacity: "0.42"
     },
     tabs: {
       radius: p.radius.sm,
-      activeShadow: "none"
+      activeShadow: "0 4px 12px rgba(110, 115, 246, 0.16)"
     },
     modal: {
       radius: p.radius.lg,
-      maxWidth: "620px"
+      maxWidth: "640px"
     }
   };
 };

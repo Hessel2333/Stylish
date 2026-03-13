@@ -60,7 +60,7 @@ export const ThemeHint = ({ theme }: { theme: ThemeName }) => {
   const { locale } = useLocale();
   const meta = themeDefinitions[theme].meta;
   const hintMap = {
-    "apple-hig": "Apple HIG：低噪音层次，弱边框与更大的呼吸感。",
+    "apple-hig": "Apple HIG：更克制的层次、细腻半透明表面与轻量控件反馈。",
     "material-3": "Material 3：更圆润、亲和、状态反馈更显性。",
     "fluent-2": "Fluent 2：边界更明确、信息密度更高、操作导向。"
   } as const;

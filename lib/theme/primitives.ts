@@ -3,34 +3,35 @@ import type { PrimitiveTokens, ThemeName } from "@/lib/theme/types";
 export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
   "apple-hig": {
     color: {
-      bgBase: "#f5f6f8",
-      bgAmbient: "radial-gradient(1200px 600px at 10% 0%, rgba(96,165,250,0.14), transparent 55%), radial-gradient(800px 420px at 90% 10%, rgba(255,255,255,0.75), transparent 60%)",
-      surfaceBase: "rgba(255, 255, 255, 0.84)",
-      surfaceElevated: "rgba(255, 255, 255, 0.94)",
-      textStrong: "#121417",
-      textMuted: "rgba(18, 20, 23, 0.66)",
-      accent: "#2077ff",
-      accentSoft: "rgba(32, 119, 255, 0.14)",
-      success: "#0f9f72",
-      warning: "#c27d1a",
-      danger: "#cf3f52",
-      borderSubtle: "rgba(255, 255, 255, 0.84)",
-      borderDefault: "rgba(15, 23, 42, 0.08)",
-      borderStrong: "rgba(15, 23, 42, 0.14)"
+      bgBase: "#f2f3f7",
+      bgAmbient:
+        "radial-gradient(1120px 640px at 14% 0%, rgba(132, 188, 255, 0.2), transparent 56%), radial-gradient(980px 580px at 88% 8%, rgba(255, 255, 255, 0.82), transparent 62%), linear-gradient(176deg, #f6f8fc 0%, #eef2f8 100%)",
+      surfaceBase: "rgba(255, 255, 255, 0.72)",
+      surfaceElevated: "rgba(255, 255, 255, 0.9)",
+      textStrong: "#111318",
+      textMuted: "rgba(17, 19, 24, 0.62)",
+      accent: "#0071e3",
+      accentSoft: "rgba(0, 113, 227, 0.12)",
+      success: "#0a8f5d",
+      warning: "#ad6a00",
+      danger: "#c83b49",
+      borderSubtle: "rgba(255, 255, 255, 0.72)",
+      borderDefault: "rgba(17, 25, 40, 0.09)",
+      borderStrong: "rgba(17, 25, 40, 0.16)"
     },
     radius: {
-      xs: "10px",
-      sm: "14px",
-      md: "20px",
-      lg: "28px",
-      xl: "36px",
+      xs: "8px",
+      sm: "12px",
+      md: "18px",
+      lg: "24px",
+      xl: "32px",
       full: "999px"
     },
     shadow: {
-      xs: "0 2px 8px rgba(15, 23, 42, 0.04)",
-      sm: "0 10px 24px rgba(15, 23, 42, 0.06)",
-      md: "0 18px 38px rgba(15, 23, 42, 0.08)",
-      lg: "0 34px 74px rgba(15, 23, 42, 0.1)"
+      xs: "0 1px 3px rgba(10, 18, 35, 0.06)",
+      sm: "0 8px 20px rgba(10, 18, 35, 0.08)",
+      md: "0 18px 36px rgba(10, 18, 35, 0.1)",
+      lg: "0 30px 64px rgba(10, 18, 35, 0.13)"
     },
     spacing: {
       xxs: "4px",
@@ -43,15 +44,15 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
       section: "88px"
     },
     typography: {
-      fontDisplay: "'Sora', 'Avenir Next', 'Segoe UI', sans-serif",
-      fontBody: "'Manrope', 'Avenir Next', 'Segoe UI', sans-serif",
+      fontDisplay: "'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif",
+      fontBody: "'SF Pro Text', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif",
       fontMono: "'IBM Plex Mono', 'SFMono-Regular', ui-monospace, monospace",
-      scaleHero: "clamp(2.6rem, 4.8vw, 4.4rem)",
-      scaleH1: "clamp(2rem, 3.6vw, 3.2rem)",
-      scaleH2: "clamp(1.45rem, 2.6vw, 2rem)",
-      scaleBody: "1.02rem",
-      scaleSmall: "0.9rem",
-      trackingDisplay: "-0.03em"
+      scaleHero: "clamp(2.55rem, 4.7vw, 4.25rem)",
+      scaleH1: "clamp(2rem, 3.55vw, 3.05rem)",
+      scaleH2: "clamp(1.42rem, 2.45vw, 1.95rem)",
+      scaleBody: "1rem",
+      scaleSmall: "0.88rem",
+      trackingDisplay: "-0.022em"
     },
     icon: {
       sm: "14px",
@@ -59,16 +60,16 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
       lg: "22px"
     },
     control: {
-      sm: "34px",
-      md: "42px",
-      lg: "50px"
+      sm: "32px",
+      md: "40px",
+      lg: "48px"
     },
     motion: {
-      fast: "180ms",
-      base: "280ms",
-      slow: "440ms",
-      easeStandard: "cubic-bezier(0.22, 1, 0.36, 1)",
-      easeEmphasis: "cubic-bezier(0.16, 1, 0.3, 1)"
+      fast: "160ms",
+      base: "240ms",
+      slow: "360ms",
+      easeStandard: "cubic-bezier(0.25, 1, 0.5, 1)",
+      easeEmphasis: "cubic-bezier(0.2, 0.9, 0.25, 1)"
     }
   },
   "material-3": {
@@ -143,55 +144,56 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
   },
   "fluent-2": {
     color: {
-      bgBase: "#f4f6f8",
-      bgAmbient: "linear-gradient(165deg, rgba(255,255,255,0.9) 0%, rgba(240,243,247,0.9) 60%, rgba(228,234,242,0.9) 100%)",
-      surfaceBase: "#ffffff",
-      surfaceElevated: "#f9fbfd",
-      textStrong: "#1b1c1f",
-      textMuted: "#5d626a",
-      accent: "#115ea3",
-      accentSoft: "rgba(17, 94, 163, 0.12)",
+      bgBase: "#edf1f8",
+      bgAmbient:
+        "radial-gradient(940px 620px at 82% 6%, rgba(214, 185, 248, 0.42), transparent 58%), radial-gradient(1080px 700px at 12% 12%, rgba(198, 220, 255, 0.36), transparent 64%), linear-gradient(168deg, #f2f5fb 0%, #e9eff8 58%, #ece7f5 100%)",
+      surfaceBase: "rgba(255, 255, 255, 0.82)",
+      surfaceElevated: "rgba(255, 255, 255, 0.94)",
+      textStrong: "#242731",
+      textMuted: "#62697a",
+      accent: "#6e73f6",
+      accentSoft: "rgba(110, 115, 246, 0.16)",
       success: "#107c10",
-      warning: "#986f0b",
-      danger: "#c50f1f",
-      borderSubtle: "#eceef1",
-      borderDefault: "#d2d7dc",
-      borderStrong: "#a3acb7"
+      warning: "#a56a08",
+      danger: "#c2394b",
+      borderSubtle: "#e5e9f2",
+      borderDefault: "#d3d9e7",
+      borderStrong: "#b3bdd1"
     },
     radius: {
-      xs: "6px",
-      sm: "10px",
-      md: "14px",
-      lg: "18px",
-      xl: "22px",
+      xs: "8px",
+      sm: "12px",
+      md: "16px",
+      lg: "20px",
+      xl: "28px",
       full: "999px"
     },
     shadow: {
-      xs: "0 1px 3px rgba(16, 24, 40, 0.08)",
-      sm: "0 4px 10px rgba(16, 24, 40, 0.1)",
-      md: "0 10px 24px rgba(16, 24, 40, 0.14)",
-      lg: "0 18px 40px rgba(16, 24, 40, 0.16)"
+      xs: "0 1px 2px rgba(52, 63, 93, 0.08)",
+      sm: "0 7px 18px rgba(59, 72, 108, 0.12)",
+      md: "0 16px 36px rgba(59, 72, 108, 0.16)",
+      lg: "0 28px 64px rgba(59, 72, 108, 0.2)"
     },
     spacing: {
-      xxs: "3px",
-      xs: "6px",
-      sm: "10px",
-      md: "14px",
-      lg: "18px",
-      xl: "24px",
-      xxl: "32px",
-      section: "56px"
+      xxs: "4px",
+      xs: "8px",
+      sm: "12px",
+      md: "16px",
+      lg: "22px",
+      xl: "30px",
+      xxl: "42px",
+      section: "66px"
     },
     typography: {
-      fontDisplay: "'Archivo', 'Public Sans', 'Segoe UI', sans-serif",
-      fontBody: "'Public Sans', 'Segoe UI', sans-serif",
+      fontDisplay: "'Segoe UI Variable Display', 'Segoe UI', 'Avenir Next', sans-serif",
+      fontBody: "'Segoe UI Variable Text', 'Segoe UI', 'Avenir Next', sans-serif",
       fontMono: "'IBM Plex Mono', ui-monospace, monospace",
-      scaleHero: "clamp(2.3rem, 4.2vw, 3.7rem)",
-      scaleH1: "clamp(1.85rem, 3vw, 2.6rem)",
-      scaleH2: "clamp(1.3rem, 2vw, 1.7rem)",
-      scaleBody: "0.96rem",
-      scaleSmall: "0.84rem",
-      trackingDisplay: "-0.015em"
+      scaleHero: "clamp(2.4rem, 4.4vw, 3.95rem)",
+      scaleH1: "clamp(1.9rem, 3.1vw, 2.75rem)",
+      scaleH2: "clamp(1.34rem, 2.12vw, 1.78rem)",
+      scaleBody: "0.99rem",
+      scaleSmall: "0.87rem",
+      trackingDisplay: "-0.01em"
     },
     icon: {
       sm: "14px",
@@ -199,16 +201,16 @@ export const primitiveTokensByTheme: Record<ThemeName, PrimitiveTokens> = {
       lg: "22px"
     },
     control: {
-      sm: "32px",
-      md: "38px",
-      lg: "46px"
+      sm: "34px",
+      md: "42px",
+      lg: "50px"
     },
     motion: {
-      fast: "120ms",
-      base: "180ms",
-      slow: "300ms",
+      fast: "130ms",
+      base: "210ms",
+      slow: "340ms",
       easeStandard: "cubic-bezier(0.1, 0.9, 0.2, 1)",
-      easeEmphasis: "cubic-bezier(0.3, 0, 0.2, 1)"
+      easeEmphasis: "cubic-bezier(0.2, 0.8, 0.2, 1)"
     }
   }
 };
